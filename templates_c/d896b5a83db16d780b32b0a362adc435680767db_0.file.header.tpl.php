@@ -1,17 +1,43 @@
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-10-09 20:46:02
+  from 'C:\xampp\htdocs\tpe-web2\Shelby-New\templates\header.tpl' */
 
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5f80afea3486f1_11906019',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'd896b5a83db16d780b32b0a362adc435680767db' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\tpe-web2\\Shelby-New\\templates\\header.tpl',
+      1 => 1602269107,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5f80afea3486f1_11906019 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <base href="{BASE_URL}">
+    <base href="<?php echo BASE_URL;?>
+">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shelby Beer</title>
     <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/estilo.css">
-    <script src="./js/control.js"></script>
+    <?php echo '<script'; ?>
+ src="./js/control.js"><?php echo '</script'; ?>
+>
 </head>
 
 <body>
@@ -39,4 +65,5 @@
         </ul>    
         
 
-    </nav>
+    </nav><?php }
+}
