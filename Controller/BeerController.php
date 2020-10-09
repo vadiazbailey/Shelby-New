@@ -6,11 +6,13 @@ class BeerController{
     //Variables
     private $beerModel;
     private $beerView;
+    private $colour;
 
     //Constructor
     function __construct(){
         $this->beerModel = new BeerModel();
         $this->beerView = new BeerView();
+        $this->colour = new ColourController();
     }
 
     //Metodos
@@ -32,20 +34,22 @@ class BeerController{
     }
 
     function insertBeer(){
+        $estilo=($_POST['cerveza']);
+        $volumen=($_POST['volumen']);
+        $graduacion_alcoholica=($_POST['graduacion']);
+        $precio=($_POST['precio']);
+        $cantidad=($_POST['cantidad']);
+        $color=($_POST['color']);
 
-        if(isset($_POST['estilo'])&&($_POST['volumen'])&&($_POST['graduacion_alcoholica'])
-        &&($_POST['precio'])&&($_POST['cantidad'])&&($_POST['color'])){
-            $estilo=($_POST['estilo']);
-            $volumen=($_POST['volumen']);
-            $graduacion_alcoholica=($_POST['graduacion_alcoholica']);
-            $precio=($_POST['precio']);
-            $cantidad=($_POST['cantidad']);
-            $color=($_POST['color']);
 
-        }      
-        $this->model->insertBeer($estilo,$volumen,$graduacion_alcoholica,$precio,
-            $cantidad,$color);
-        header("Location: " . BEERS);
+        if (!empty($estilo) && !empty($volumen) && !empty($graduacion_alcoholica) && !empty($precio) 
+        && !empty($cantidad) && !empty($color)){
+            
+            $this->model->insertBeer($estilo,$volumen,$graduacion_alcoholica,$precio,
+                $cantidad,$color);
+                
+            }      
+            header("Location: " . BEERS);
     }
 
 

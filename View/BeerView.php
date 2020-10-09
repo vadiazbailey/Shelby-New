@@ -14,7 +14,7 @@ class BeerView{
     }
 
     function showBeers($beers){
-        $this->smarty->assign('beers', $beers);
+        $this->smarty->assign('cervezas', $beers);
         $this ->smarty-> display('templates/table.tpl');
     }
 

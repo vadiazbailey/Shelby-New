@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 09-10-2020 a las 01:37:31
--- Versión del servidor: 10.1.26-MariaDB
--- Versión de PHP: 7.1.8
+-- Host: 127.0.0.1
+-- Generation Time: Oct 09, 2020 at 09:14 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `db_shelby`
+-- Database: `db_shelby`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cerveza`
+-- Table structure for table `cerveza`
 --
 
 CREATE TABLE `cerveza` (
@@ -39,7 +38,7 @@ CREATE TABLE `cerveza` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `cerveza`
+-- Dumping data for table `cerveza`
 --
 
 INSERT INTO `cerveza` (`id_cerveza`, `estilo`, `volumen`, `graduacion_alcoholica`, `precio`, `cantidad`, `id_color`) VALUES
@@ -48,19 +47,19 @@ INSERT INTO `cerveza` (`id_cerveza`, `estilo`, `volumen`, `graduacion_alcoholica
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `color`
+-- Table structure for table `color`
 --
 
 CREATE TABLE `color` (
   `id_color` int(11) NOT NULL,
-  `color` varchar(50) NOT NULL
+  `nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `color`
+-- Dumping data for table `color`
 --
 
-INSERT INTO `color` (`id_color`, `color`) VALUES
+INSERT INTO `color` (`id_color`, `nombre`) VALUES
 (1, 'Rubia'),
 (2, 'Roja'),
 (3, 'Negra');
@@ -68,7 +67,7 @@ INSERT INTO `color` (`id_color`, `color`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -78,53 +77,56 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `cerveza`
+-- Indexes for table `cerveza`
 --
 ALTER TABLE `cerveza`
   ADD PRIMARY KEY (`id_cerveza`),
   ADD KEY `id_color` (`id_color`);
 
 --
--- Indices de la tabla `color`
+-- Indexes for table `color`
 --
 ALTER TABLE `color`
   ADD PRIMARY KEY (`id_color`);
 
 --
--- Indices de la tabla `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `cerveza`
+-- AUTO_INCREMENT for table `cerveza`
 --
 ALTER TABLE `cerveza`
   MODIFY `id_cerveza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT de la tabla `color`
+-- AUTO_INCREMENT for table `color`
 --
 ALTER TABLE `color`
   MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `cerveza`
+-- Constraints for table `cerveza`
 --
 ALTER TABLE `cerveza`
   ADD CONSTRAINT `cerveza_ibfk_1` FOREIGN KEY (`id_color`) REFERENCES `color` (`id_color`) ON DELETE CASCADE;

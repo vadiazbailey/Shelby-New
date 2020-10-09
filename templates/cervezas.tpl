@@ -1,6 +1,6 @@
 <article id="menu-cervezas">
         <ul class="lista-cerveza">
-            <li class="li-cerveza"><a href="#honey"> Honey</a></li>
+            <li class="li-cerveza"><a href="honey"> Honey</a></li>
             <li class="li-cerveza"><a href="#red">Red</a> </li>
             <li class="li-cerveza"><a href="#porter"> Porter</a></li>
             <li class="li-cerveza"><a href="#barleywine">Barley wine</a> </li>
