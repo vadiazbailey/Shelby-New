@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-09 00:07:54
+/* Smarty version 3.1.34-dev-7, created on 2020-10-09 01:57:17
   from 'C:\xampp\htdocs\Shelby\templates\table.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7f8dbaced0b8_83346051',
+  'unifunc' => 'content_5f7fa75d3d95a1_28462617',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5da4e5cc069f1dbb1dafc7218f1e09be801025d8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Shelby\\templates\\table.tpl',
-      1 => 1602194286,
+      1 => 1602201433,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7f8dbaced0b8_83346051 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7fa75d3d95a1_28462617 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:cervezas.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -51,6 +51,14 @@ $_smarty_tpl->tpl_vars['cerveza']->do_else = false;
                     <td><?php echo $_smarty_tpl->tpl_vars['cerveza']->value->estilo;?>
 </td>
                     </tr>
+                    <tr> 
+                    <td><?php echo $_smarty_tpl->tpl_vars['cerveza']->value->volumen;?>
+</td>
+                    </tr>
+                    <tr> 
+                    <td><?php echo $_smarty_tpl->tpl_vars['cerveza']->value->graduacion_alcoholica;?>
+</td>
+                    </tr>
                 <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
@@ -66,7 +74,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </p>
 
                 <p>Volumen:
-                    <input type="text" id="snack" value="">
+                    <input type="number" id="snack" value="">
                 </p>
                 <p>
                 Graduacion alcoholica:

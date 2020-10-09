@@ -14,9 +14,15 @@
 
                     </tr>
                 </thead>
-                {foreach from=$cervezas item=$cerveza}
+                {foreach from=$cervezas item=cerveza}
                     <tr> 
                     <td>{$cerveza->estilo}</td>
+                    </tr>
+                    <tr> 
+                    <td>{$cerveza->volumen}</td>
+                    </tr>
+                    <tr> 
+                    <td>{$cerveza->graduacion_alcoholica}</td>
                     </tr>
                 {/foreach}
                 <tbody id="tabla" class="tbody"></tbody>
@@ -31,7 +37,7 @@
                 </p>
 
                 <p>Volumen:
-                    <input type="text" id="snack" value="">
+                    <input type="number" id="snack" value="">
                 </p>
                 <p>
                 Graduacion alcoholica:
