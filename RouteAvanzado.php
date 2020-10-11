@@ -11,15 +11,19 @@
     //Rutas del navegador
     $r->addRoute("home", "GET", "BeerController", "showHome");
     $r->addRoute("cerveza", "GET", "BeerController", "showBeers");
-    $r->addRoute("color", "GET", "ColourController", "showColour");
+    $r->addRoute("color", "GET", "ColourController", "showColours");
     $r->addRoute("reserva", "GET", "BeerController", "showReserva");
     $r->addRoute("contacto", "GET", "BeerController", "showContacto");
 
 
 
-    //Alta, baja y Modificar
+    //Alta, baja y Modificar Cerveza
     $r->addRoute("insertBeer", "POST", "BeerController", "insertBeer");
-    
+    $r->addRoute("editBeer/:ID", "GET", "BeerController", "editBeer");
+    $r->addRoute("deleteBeer/:ID", "GET", "BeerController", "deleteBeer");
+
+    //Alta, baja y Modificar Cerveza
+    $r->addRoute("insertColour", "POST", "ColourController", "insertColour");
 
     //Ruta por defecto.
     $r->setDefaultRoute("BeerController", "showHome");
