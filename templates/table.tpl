@@ -32,24 +32,24 @@
                 <label>Agregue el producto que desee</label>
                 <p> 
                     Cerveza:
-                    <input type="text" name="cerveza" value="">
+                    <input class="cerveza" type="text" name="cerveza" value="">
                 </p>
                 <p> 
                     Volumen:
-                    <input type="number" name="volumen" value="">
+                    <input class="volumen" type="number" name="volumen" value="">
                 </p>
                 <p>
                     Graduacion alcoholica:
-                    <input type="number" name="graduacion" value="">
+                    <input class="graduacion" type="number" name="graduacion" value="">
                 </p>
                 <p>
                     Precio:
-                    <input type="number" name="precio" value="">
+                    <input class="precio" type="number" name="precio" value="">
                    
                 </p>
                 <p>
                     Cantidad:
-                    <input type="number" name="cantidad" value="">
+                    <input type="cantidad" type="number"name="cantidad" value="">
                     
                 </p>
                 <p>

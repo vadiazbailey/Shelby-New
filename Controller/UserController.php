@@ -24,6 +24,14 @@ class UserController{
         header("Location:" .LOGIN);
     }
 
+    private function checkLoggedIn(){
+        session_start();
+        if(!isset($_SESSION["MAIL"])){
+            header("Location: ".LOGIN);
+            
+        }
+    }
+
     function verifyUser($user){
         $userName = $_POST["input_user"];
         $password = $_POST["input_pass"];

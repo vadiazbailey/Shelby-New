@@ -22,9 +22,9 @@
             </table>
 
             <form method="POST" action="insertColour" class="agregar-producto">
-                <label>Agregue el producto que desee</label>
+                <label>Pedido</label>
                 <p> Color:
-                    <input type="text" name="nombre" value="">
+                    <input class="nombre" name="nombre" type="text" value="">
                 </p>
                 <button type="submit" class="enviarDatos">Insertar Color</button>
             </form>

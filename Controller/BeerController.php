@@ -18,13 +18,7 @@ class BeerController{
         $this->beerView = new BeerView();
     }
 
-    private function checkLoggedIn(){
-        session_start();
-        if(!isset($_SESSION["MAIL"])){
-            header("Location: ".LOGIN);
-            
-        }
-    }
+    
 
     //Metodos
     function showHome(){
@@ -67,7 +61,7 @@ class BeerController{
     //Elimina una cerveza
     public function deleteBeer($id_cerveza){
         $this->model->deleteBeer($id_cerveza);
-
+        
         header ("Location: " . BEERS);
     }
    
@@ -88,9 +82,8 @@ class BeerController{
             $graduacion_alcoholica=($_POST['graduacion_alcoholica']);
             $precio=($_POST['precio']);
             $cantidad=($_POST['cantidad']);
-            $color=($_POST['color']);
 
-            $this->model->editAlumno ($id_cerveza, $estilo, $volumen, 
+            $this->beerModel->editBeer ($id_cerveza, $estilo, $volumen, 
             $graduacion_alcoholica, $precio, $cantidad,$color);
             header ("Location: " . BEERS);
         }
