@@ -1,5 +1,4 @@
 {include file="header.tpl" }
-
         <aside  id="descripcion" class="descripcion-cervezas">
             <table>
                 <thead>
@@ -9,9 +8,7 @@
                         <th>Graduacion alcoholica</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
-                        <th></th>
-                        
-
+                        <th>Color</th>
                     </tr>
                 </thead>
                 {foreach from=$cervezas item=cerveza}
@@ -21,8 +18,9 @@
                     <td>{$cerveza->graduacion_alcoholica}</td>
                     <td>{$cerveza->precio}</td>
                     <td>{$cerveza->cantidad}</td>
-                    <td><button><a href='edit/{$cerveza->id_cerveza}'>Editar</a></button></td>
-                    <td><button><a href='eliminar/{$cerveza->id_cerveza}'>Borrar</a></button></td>
+                    <td>{$cerveza->id_color} </td>
+                    <td><button type="submit" class="enviarDatos"><a href='editBeer/{$cerveza->id_cerveza}'>Editar</a></button></td>
+                    <td><button type="submit" class="enviarDatos"><a href='deleteBeer/{$cerveza->id_cerveza}'>Borrar</a></button></td>
                     </tr>
                 {/foreach}
                 <tbody id="tabla" class="tbody"></tbody>
@@ -32,15 +30,16 @@
 
             <form method="POST" action="insertBeer" class="agregar-producto">
                 <label>Agregue el producto que desee</label>
-                <p> Cerveza:
+                <p> 
+                    Cerveza:
                     <input type="text" name="cerveza" value="">
-                </p
-
-                <p>Volumen:
+                </p>
+                <p> 
+                    Volumen:
                     <input type="number" name="volumen" value="">
                 </p>
                 <p>
-                Graduacion alcoholica:
+                    Graduacion alcoholica:
                     <input type="number" name="graduacion" value="">
                 </p>
                 <p>
@@ -53,25 +52,16 @@
                     <input type="number" name="cantidad" value="">
                     
                 </p>
-
                 <p>
                     Color:
                     <select name="color">
-                 {foreach from=$colores item=color }
-                    <option value="{$color->id_color}">{$color->nombre}</option>
-                 {/foreach}
-                </select>
+                    {foreach from=$colour item=color }
+                        <option value="{$colour->id_color}">{$colour->nombre}</option>   
+                    {/foreach}
+                    </select>
                 
                 </p>
-
-
-                
-                <button id="btn-enviar" type="button">Enviar</button>
-                <button id="btn-borrar" type="button">Borrar</button>
-                
-
-         
-                
+                <button type="submit" class="enviarDatos">Enviar Pedido</button>
             </form>
 
 
@@ -86,4 +76,4 @@
     </article>
 
 {include file="cervezas.tpl" }
-    {include file="footer.tpl" }
+{include file="footer.tpl" }

@@ -20,49 +20,12 @@
                 
 
             </table>
-{*
-            <form method="POST" action="insertBeer" class="agregar-producto">
+
+            <form method="POST" action="insertColour" class="agregar-producto">
                 <label>Agregue el producto que desee</label>
-                <p> Cerveza:
-                    <input type="text" name="cerveza" value="">
-                </p
-
-                <p>Volumen:
-                    <input type="number" name="volumen" value="">
+                <p> Color:
+                    <input type="text" name="nombre" value="">
                 </p>
-                <p>
-                Graduacion alcoholica:
-                    <input type="number" name="graduacion" value="">
-                </p>
-                <p>
-                    Precio:
-                    <input type="number" name="precio" value="">
-                   
-                </p>
-                <p>
-                    Cantidad:
-                    <input type="number" name="cantidad" value="">
-                    
-                </p>
-
-                <p>
-                    Color:
-                    <select name="color">
-                 {foreach from=$colores item=color }
-                    <option value="{$color->id_color}">{$color->nombre}</option>
-                 {/foreach}
-                </select>
-                
-                </p>
-
-
-                
-                <button id="btn-enviar" type="button">Enviar</button>
-                <button id="btn-borrar" type="button">Borrar</button>
-                
-
-         
-                
+                <button type="submit" class="enviarDatos">Insertar Color</button>
             </form>
-*}
 {include file="footer.tpl" }
