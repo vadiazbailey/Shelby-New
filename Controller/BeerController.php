@@ -15,6 +15,14 @@ class BeerController{
         $this->colour = new ColourController();
     }
 
+    private function checkLoggedIn(){
+        session_start();
+        if(!isset($_SESSION["MAIL"])){
+            header("Location: ".LOGIN);
+            
+        }
+    }
+
     //Metodos
     function showHome(){
         $this-> beerView-> showHome();

@@ -1,21 +1,25 @@
 <?php
 
-require_once "./lib/smarty/Smarty.class.php";
+require_once './libs/Smarty.class.php';
 
 class UserView{
-    private $title;
-    
+    //private $title;
+    private $smarty;
 
+    
     function __construct(){
-        $this->title= "Login";
+        $this->smarty = new Smarty();
+        $this->smarty->assign('BASEURL', BASE_URL);
     }
 
-    function showLogin($message = ""){
-        $smarty =new Smarty();
-        $smarty->assign('titulo_s', $this->title);
-        $smarty->assign('message', $message);
+
+    function showLogin(){
+       // $smarty->assign('titulo_s', $this->title);
+      //  $smarty->assign('message', $message);
 
         //Muestro el template
-        $smarty->display('templates/login.tpl');
+       // $this->smarty->assign('user',$user);
+        $this->smarty->display('templates/login.tpl');
     }
+
 }

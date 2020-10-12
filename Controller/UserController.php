@@ -5,41 +5,55 @@ require_once "./Model/UserModel.php";
 
 class UserController{
 
-    private $view;
-    private $model;
+    private $userView;
+    private $userModel;
+
 
     function __construct(){
-        $this->view = new UserView();
-        $this->model = new UserModel();
+        $this->userView = new UserView();
+        $this->userModel = new UserModel();
     }
 
     function Login(){
-        $this->view->showLogin();
+        $this->userView->showLogin();
     }
 
-    function verifyUser(){
-        $user = $_POST["input_user"];
-        $password = $_POST["input_password"];
+    function Logout(){
+        session_start();
+        session_destroy();
+        header("Location:" .LOGIN);
+    }
 
-        if(isset($user)){
-            //traigo el usuario de la DB 
-            $userFromDB = $this->model->GetUser($user);
-            
-            if(isset($userFromDB) && $userFromDB)){
-                //existe el usuario
+    function verifyUser($user){
+        $userName = $_POST["input_user"];
+        $password = $_POST["input_pass"];
 
-                if(password_verify($password,$userFromDB->password)){
-                    header("Location:" .BASE_URL. "home");
-                    else{
-                        $this->view->ShowLogin("Contraseña Incorrecta");
+        
+        if(!empty($userName)&& !empty($password)){
+            if(isset($userName)){
+                $userFromDB= $this->userModel->GetUser($userName);
+                if(isset($userFromDB)&& $userFromDB){
+
+                      if (password_verify($password, $userFromDB->password)){
+                        session_start();
+                        $_SESSION['MAIL'] = $userFromDB->mail;
+                        header("Location: " .BASE_URL. "home");
+                    }else{
+                        $this->userView->showLogin("Contraseña incorrecta");
                     }
+                }else{
+                    // No existe el user en la DB
+                    $this->userView->showLogin("Usuario incorrecto");
                 }
-            }else{
-                //no existe el user en la DB
-                $this->view->showLogin("El usuario no existe");
             }
+        }else{ 
+            $this->userView-showLogin("Faltan campos obligatorios.");
         }
+      
+
+
+
+      
+        
     }
 }
-
-?>

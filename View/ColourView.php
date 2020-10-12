@@ -11,9 +11,9 @@ class ColourView{
         $this->smarty->assign('BASEURL', BASE_URL);
     }
 
-    function showColour($colour){
-        $this->smarty->assign('colour', $colour);
-        $this ->smarty-> display('templates/tablaColor.tpl');
+    function showColour($color){
+        $this->smarty->assign('colour', $color);
+        $this->smarty->display('templates/tablaColor.tpl');
     }
 
 
