@@ -354,6 +354,10 @@ tbody {
     font-size: 18px;
 }
 
+table,td,a{
+    color: black;
+}
+
 table, td, tr {
     border-collapse: collapse;
 }

@@ -9,7 +9,7 @@ class UserView{
     
     function __construct(){
         $this->smarty = new Smarty();
-        $this->smarty->assign('BASEURL', BASE_URL);
+       // $this->smarty->assign('BASEURL', BASE_URL);
     }
 
 

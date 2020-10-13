@@ -29,22 +29,23 @@ class ColourModel{
     //Agrega un color de cerveza
     function insertColour($nombre){
         var_dump($nombre);
-        $sentencia = $this->db->prepare('INSERT INTO color (nombre) VALUES ?');
+        $sentencia = $this->db->prepare('INSERT INTO color (nombre) VALUES (?)');
         $sentencia->execute(array($nombre));
         }
 
           //Elimina una cerveza
-     function DeleteBeer($color_id){
-        $sentencia = $this->db->prepare("DELETE FROM color WHERE id=?");
-        $sentencia->execute(array($color_id));
-    }
-
-     
-    //Edita una cerveza
-    function editBeer($id_color,$nombre){
-      $sentencia = $this->db->prepare('UPDATE color SET nombre=? WHERE id_color=?');
-      $sentencia->execute(array($id_color,$nombre));
-    }
+          function DeleteColor($color_id){
+            $sentencia = $this->db->prepare("DELETE FROM color WHERE id_color=?");
+            $sentencia->execute(array($color_id));
+        }
+    
+         
+        //Edita una cerveza
+        function editColor($id_color,$nombre){
+          $sentencia = $this->db->prepare('UPDATE color SET nombre=? WHERE id_color=?');
+          $sentencia->execute(array($nombre));
+        }
+    
 
     
 }

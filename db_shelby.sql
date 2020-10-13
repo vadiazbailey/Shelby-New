@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2020 at 09:14 PM
+-- Generation Time: Oct 13, 2020 at 07:17 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -77,6 +77,13 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `mail`, `password`) VALUES
+(1, 'shelby_tandil@gmail.com', '$2y$12$U/8P1Mpf0IJhnkPDlTYGTu6cb.NC4IK3qa1Zro1qPNNF57lkmit3u');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -107,7 +114,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `cerveza`
 --
 ALTER TABLE `cerveza`
-  MODIFY `id_cerveza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_cerveza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `color`
@@ -119,7 +126,7 @@ ALTER TABLE `color`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

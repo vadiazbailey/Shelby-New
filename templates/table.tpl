@@ -10,6 +10,7 @@
                 <th>Cantidad</th>
                 <th>Color</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         {foreach from=$cervezas item=cerveza}
@@ -19,7 +20,7 @@
                 <td>{$cerveza->graduacion_alcoholica}</td>
                 <td>{$cerveza->precio}</td>
                 <td>{$cerveza->cantidad}</td>
-                <td>{$cerveza->id_color} </td>
+                <td>{$cerveza->nombre} </td>
                 <td><button type="submit" class="enviarDatos"><a href='editBeer/{$cerveza->id_cerveza}'>Editar</a></button></td>
                 <td><button type="submit" class="enviarDatos"><a href='deleteBeer/{$cerveza->id_cerveza}'>Borrar</a></button></td>
             </tr>
@@ -57,7 +58,8 @@
             Color:
             <select name="color">
                 {foreach from=$colour item=color }
-                    <option value="{$colour->id_color}">{$colour->nombre}</option>
+                    <option value="{$color->id_color}">{$color->nombre}</option>
+                    
                 {/foreach}
             </select>
 

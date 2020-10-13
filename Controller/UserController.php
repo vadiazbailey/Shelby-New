@@ -23,16 +23,9 @@ class UserController{
         session_destroy();
         header("Location:" .LOGIN);
     }
-
-    private function checkLoggedIn(){
-        session_start();
-        if(!isset($_SESSION["MAIL"])){
-            header("Location: ".LOGIN);
-            
-        }
-    }
-
-    function verifyUser($user){
+     
+    
+    function verifyUser(){
         $userName = $_POST["input_user"];
         $password = $_POST["input_pass"];
 
@@ -42,7 +35,7 @@ class UserController{
                 $userFromDB= $this->userModel->GetUser($userName);
                 if(isset($userFromDB)&& $userFromDB){
 
-                      if (password_verify($password, $userFromDB->password)){
+                    if (password_verify($password, $userFromDB->password)){
                         session_start();
                         $_SESSION['MAIL'] = $userFromDB->mail;
                         header("Location: " .HOME);
@@ -54,14 +47,21 @@ class UserController{
                     $this->userView->showLogin("Usuario incorrecto");
                 }
             }
-        }else{ 
-            $this->userView-showLogin("Faltan campos obligatorios.");
         }
-      
-
-
+    }
+        
+        
+        //Verifica que se haya iniciado sesion
+        private function checkLoggedIn(){
+            session_start();
+            if(!isset($_SESSION["MAIL"])){
+                header("Location: ".LOGIN);
+                
+            }
+        }
+        
 
       
         
-    }
+    
 }

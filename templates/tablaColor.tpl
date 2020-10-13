@@ -13,8 +13,8 @@
             <tr>
                 <td>{$c->nombre}</td>
     
-                <td><button><a href='editColour/{$colour->id_colour}'></a>Editar</button></td>
-                <td><button><a href='deleteColour/{$colour->id_colour}'></a>Borrar</button></td>
+                <td><button><a href='editColour/{$c->id_color}'>Editar</a></button></td>
+                <td><button><a href='deleteColour/{$c->id_color}'>Borrar</a></button></td>
             </tr>
         {/foreach}
         <tbody id="tabla" class="tbody"></tbody>

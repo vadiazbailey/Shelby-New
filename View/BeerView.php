@@ -12,6 +12,7 @@ class BeerView{
     }
 
     function showHome(){
+        $this->smarty->assign('title', 'Shelby Beer');
         $this ->smarty-> display('templates/home.tpl');
     }
 
@@ -27,5 +28,14 @@ class BeerView{
 
     function showContacto(){
         $this ->smarty-> display('templates/contacto.tpl');
+    }
+
+   
+
+    function mostrarFormEditBeer($beer){
+        $this->smarty->assign('cerveza', $beer);
+       // $this->smarty->assing('colour', $colour);
+        $this ->smarty-> display('templates/editBeer.tpl');
+
     }
 }

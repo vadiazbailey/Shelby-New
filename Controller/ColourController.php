@@ -32,25 +32,41 @@ class ColourController{
         $nombre=($_POST['nombre']);
         if (isset($nombre)){        
                 var_dump($nombre);
-            $this->model->insertColour($nombre);     
+            $this->colourModel->insertColour($nombre);     
         }      
         header("Location: " . COLOR);
     }
 
     //Funcion que me modifica un color
-    function editColour(){
-        if(isset($_POST['nombre'])){
-            $id_color = ($_POST['id']);
-            $nombre=($_POST['nombre']);
-        }
-        $this->model->editColour($id_color, $nombre);
+    function editColor($params = null){
+        $id_color = $params[':ID'];
+        $color = $this->colourModel->getColour($id_color);
+        var_dump($color);
+        $this->colourView->mostrarFormEditColor($color);
         header("Location: " . COLOR);
     }
 
+    function mostrarColorActualizado(){
+        $nombre = $_POST ['nombre'];
+        $id = $_POST ['id'];
+        if (!empty($nombre)){
+            var_dump($nombre);
+            $this->colourModel->editColor($nombre, $id);
+        }
+        header("Location: " . COLOR);
+        
+    }
+
     //Función que elimina un color
-    function deleteColour($id_color){
-        $this->model->deleteColour($id_color);
+    function deleteColor($params = null){
+        $id_color = $params[':ID'];
+        $color = $this->colourModel->getColour($id_color);
+        $this->colourModel->DeleteColor($id_color);
         header ("Location: " . COLOR);
     }
+
+    
+
+    
 
 }

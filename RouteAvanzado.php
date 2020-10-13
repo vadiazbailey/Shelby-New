@@ -7,11 +7,11 @@
 
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
-    define("HOME", BASE_URL. 'showHome');
-    define("CERVEZA", BASE_URL. 'showBeers');
-    define("COLOR", BASE_URL.'showColours');
-    define("RESERVA", BASE_URL.'showReserva');
-    define("CONTACTO", BASE_URL.'showContacto');
+    define("HOME", BASE_URL. 'home');
+    define("CERVEZA", BASE_URL. 'cerveza');
+    define("COLOR", BASE_URL.'color');
+    define("RESERVA", BASE_URL.'reserva');
+    define("CONTACTO", BASE_URL.'contacto');
     define("LOGIN", BASE_URL.'Login');
     define("LOGOUT", BASE_URL.'Logout');
 
@@ -35,9 +35,14 @@
     $r->addRoute("insertBeer", "POST", "BeerController", "insertBeer");
     $r->addRoute("editBeer/:ID", "GET", "BeerController", "editBeer");
     $r->addRoute("deleteBeer/:ID", "GET", "BeerController", "deleteBeer");
+    $r->addRoute("mostrarCervezaActualizada", "POST", "BeerController", "mostrarCervezaActualizada");
 
-    //Alta, baja y Modificar Cerveza
+    //Alta, baja y Modificar Color
     $r->addRoute("insertColour", "POST", "ColourController", "insertColour");
+    $r->addRoute("editColour/:ID", "GET", "ColourController", "editColor");
+    $r->addRoute("deleteColour/:ID", "GET", "ColourController", "deleteColor");
+    $r->addRoute("mostrarColorActualizado", "GET", "ColourController", "mostrarColorActualizado");
+    
 
     //Ruta por defecto.
     $r->setDefaultRoute("BeerController", "showHome");

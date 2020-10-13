@@ -12,16 +12,22 @@ class BeerModel{
 
     //Metodos
     function getBeers(){
-        $sentencia = $this->db->prepare("SELECT * FROM cerveza");
+        $sentencia = $this->db->prepare("SELECT *, color.nombre FROM cerveza JOIN color ON cerveza.id_color = color.id_color");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
-        
+
     }
 
-    //Agrega una nueva cerveza
-    function insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color){
-    $sentencia = $this->db->prepare('INSERT INTO cerveza (estilo, volumen, 
-    graduacion_alcoholica, precio, cantidad, id_color) VALUES(?,?,?,?,?,?)');
+    function getBeer($id_cerveza){
+        $sentencia = $this->db->prepare("SELECT *, color.nombre FROM cerveza JOIN color ON cerveza.id_color = color.id_color WHERE id_cerveza= ?");
+        $sentencia->execute(array($id_cerveza));
+        $beer = $sentencia->fetch(PDO::FETCH_OBJ);
+        return $beer;
+    }
+
+ //Agrega una nueva cerveza
+ function insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color){
+    $sentencia = $this->db->prepare('INSERT INTO cerveza (estilo, volumen, graduacion_alcoholica, precio, cantidad, id_color) VALUES(?,?,?,?,?,?)');
     $sentencia->execute(array($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color));
     }
 
@@ -31,12 +37,24 @@ class BeerModel{
         $sentencia->execute(array($id_cerveza));
     }
     
-    //Edita una cerveza
-    function editBeer($id_cerveza, $estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, 
-    $color){
-      $sentencia = $this->db->prepare('UPDATE cerveza SET estilo=?, volumen=?, 
-      graduacion_alcoholica=?, precio=?, cantidad=?, id_color=?  WHERE id_cerveza=?');
-      $sentencia->execute(array($estilo, $volumen, $graduacion_alcoholica, $precio,
-                          $cantidad, $color, $id_cerveza));
-    }
+     //Edita una cerveza
+     //$this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
+     function editBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, 
+     $color, $id_cerveza){
+       
+       try {
+        $sentencia = $this->db->prepare("UPDATE cerveza SET estilo=?, volumen=?, 
+        graduacion_alcoholica=?, precio=?, cantidad=?, id_color=?  WHERE id_cerveza=?");
+      
+        $result =
+        $sentencia->execute(array($estilo, $volumen, $graduacion_alcoholica, $precio,
+        $cantidad, $color, $id_cerveza));
+      
+                       
+           //code...
+       } catch (\Exception $th) {
+           var_dump($th);
+           die();
+       }
+     }
 }
