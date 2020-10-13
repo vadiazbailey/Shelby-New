@@ -14,22 +14,21 @@ class BeerModel{
     function getBeers(){
         $sentencia = $this->db->prepare("SELECT * FROM cerveza");
         $sentencia->execute();
-        $beers = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $beers;
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+        
     }
 
     //Agrega una nueva cerveza
     function insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color){
-    $sentencia = $this->db->prepare("INSERT INTO cerveza (estilo, volumen, 
-    graduacion_alcoholica, precio, cantidad, id_color) VALUES(?,?,?,?,?,?)");
-    $sentencia->execute(array($estilo, $volumen, $graduacion_alcoholica, $precio, 
-                $cantidad, $color));
+    $sentencia = $this->db->prepare('INSERT INTO cerveza (estilo, volumen, 
+    graduacion_alcoholica, precio, cantidad, id_color) VALUES(?,?,?,?,?,?)');
+    $sentencia->execute(array($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color));
     }
 
      //Elimina una cerveza
-     function DeleteBeer($cerveza_id){
-        $sentencia = $this->db->prepare("DELETE FROM cerveza WHERE id=?");
-        $sentencia->execute(array($cerveza_id));
+     function deleteBeer($id_cerveza){
+        $sentencia = $this->db->prepare("DELETE FROM cerveza WHERE id_cerveza=?");
+        $sentencia->execute(array($id_cerveza));
     }
     
     //Edita una cerveza

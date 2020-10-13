@@ -1,5 +1,5 @@
 <!--       Footer          -->
-   <footer class="footer">
+<footer class="footer">
     <div class="logo-footer">
         <!--       logo shelby          -->
 
@@ -36,8 +36,8 @@
                     <li>ShelbyBeer@gmail.com</li>
                 </ul>
 
+            </div>
         </div>
-    </div>
 
     </div>
     <hr class="hr-footer">
@@ -49,7 +49,7 @@
 </footer>
 
 
-    
+
 </body>
 
 

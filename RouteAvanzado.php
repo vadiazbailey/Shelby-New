@@ -7,9 +7,13 @@
 
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
-    define("BEERS", BASE_URL . 'BEERS');
-    define("LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/login');
-    define("LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/logout');
+    define("HOME", BASE_URL. 'showHome');
+    define("CERVEZA", BASE_URL. 'showBeers');
+    define("COLOR", BASE_URL.'showColours');
+    define("RESERVA", BASE_URL.'showReserva');
+    define("CONTACTO", BASE_URL.'showContacto');
+    define("LOGIN", BASE_URL.'Login');
+    define("LOGOUT", BASE_URL.'Logout');
 
     $r = new Router();
 
@@ -19,6 +23,8 @@
     $r->addRoute("color", "GET", "ColourController", "showColours");
     $r->addRoute("reserva", "GET", "BeerController", "showReserva");
     $r->addRoute("contacto", "GET", "BeerController", "showContacto");
+
+    //Rutas del usuario
     $r->addRoute("login", "GET", "UserController", "Login");
     $r->addRoute("logout", "GET", "UserController", "Logout");
     $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");

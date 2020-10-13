@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +20,9 @@
             <img id="logo-shelby" src="imagenes/Shelby Beer logo.png" alt="logo" srcset="">
             <li class="li-item"><a href="login">Login</a></li>
             <li class="li-item"><a href="logout">Logout</a></li>
-           
+
         </div>
-        
+
 
     </header>
 
@@ -38,7 +36,7 @@
             <li class="li-item"><a href="color">Color</a></li>
             <li class="li-item"><a href="reserva">Reservas</a></li>
             <li class="li-item"><a href="contacto">Contacto</a></li>
-        </ul>    
-        
+        </ul>
+
 
     </nav>

@@ -34,7 +34,7 @@ class ColourController{
                 var_dump($nombre);
             $this->model->insertColour($nombre);     
         }      
-        header("Location: " . BEERS);
+        header("Location: " . COLOR);
     }
 
     //Funcion que me modifica un color
@@ -44,13 +44,13 @@ class ColourController{
             $nombre=($_POST['nombre']);
         }
         $this->model->editColour($id_color, $nombre);
-        header("Location: " . BEERS);
+        header("Location: " . COLOR);
     }
 
     //Función que elimina un color
     function deleteColour($id_color){
         $this->model->deleteColour($id_color);
-        header ("Location: " . BEERS);
+        header ("Location: " . COLOR);
     }
 
 }

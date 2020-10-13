@@ -44,48 +44,49 @@ class BeerController{
 
     //Me inserta una cerveza
     function insertBeer(){
-        if(isset($_POST['estilo'])&&($_POST['volumen'])&&($_POST['graduacion_alcoholica'])
-        &&($_POST['precio'])&&($_POST['cantidad'])&&($_POST['color'])){
-            $estilo=($_POST['estilo']);
-            $volumen=($_POST['volumen']);
-            $graduacion_alcoholica=($_POST['graduacion_alcoholica']);
-            $precio=($_POST['precio']);
-            $cantidad=($_POST['cantidad']);
-            $color=($_POST['color']);
+        //$logeado = $this->userName->checkLoggedIn();
+        
+        
+        $estilo=$_POST['cerveza'];
+        $volumen=$_POST['volumen'];
+        $graduacion_alcoholica=$_POST['graduacion'];
+        $precio=$_POST['precio'];
+        $cantidad=$_POST['cantidad'];
+        $color=$_POST['color'];
+        var_dump($estilo);
+        if(!empty($estilo)&& !empty($volumen)&& !empty($graduacion_alcoholica)&& !empty($precio)&&!empty($cantidad)&&!empty($color)){
+            $this->beerModel->insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color);
+            header("Location: " . CERVEZA);
         }     
-        $this->model->insertBeer($estilo,$volumen,$graduacion_alcoholica,$precio,
-        $cantidad,$color);
-        header("Location: " . BEERS);
     }
 
     //Elimina una cerveza
     public function deleteBeer($id_cerveza){
-        $this->model->deleteBeer($id_cerveza);
-        
-        header ("Location: " . BEERS);
+        $this->beerModel->deleteBeer($id_cerveza);
+        header ("Location: " . CERVEZA);
     }
    
     //Edita una cerveza
     public function editBeer(){
         //var_dump($_POST); die;
-        if(isset($_POST['estilo'])&&
+        if(isset($_POST['cerveza'])&&
                 ($_POST['volumen'])&&
-                ($_POST['graduacion_alcoholica'])&&
+                ($_POST['graduacion'])&&
                 ($_POST['precio'])&&
                 ($_POST['cantidad'])&&
                 ($_POST['color'])&&
                 ($_POST['id_cerveza'])){
 
             $id_cerveza = ($_POST['id_cerveza']);
-            $estilo=($_POST['estilo']);
+            $estilo=($_POST['cerveza']);
             $volumen=($_POST['volumen']);
-            $graduacion_alcoholica=($_POST['graduacion_alcoholica']);
+            $graduacion_alcoholica=($_POST['graduacion']);
             $precio=($_POST['precio']);
             $cantidad=($_POST['cantidad']);
 
             $this->beerModel->editBeer ($id_cerveza, $estilo, $volumen, 
             $graduacion_alcoholica, $precio, $cantidad,$color);
-            header ("Location: " . BEERS);
+            header ("Location: " . CERVEZA);
         }
     }
 

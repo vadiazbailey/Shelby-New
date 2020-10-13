@@ -45,7 +45,7 @@ class UserController{
                       if (password_verify($password, $userFromDB->password)){
                         session_start();
                         $_SESSION['MAIL'] = $userFromDB->mail;
-                        header("Location: " .BASE_URL. "home");
+                        header("Location: " .HOME);
                     }else{
                         $this->userView->showLogin("Contraseña incorrecta");
                     }

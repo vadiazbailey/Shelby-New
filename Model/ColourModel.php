@@ -29,7 +29,7 @@ class ColourModel{
     //Agrega un color de cerveza
     function insertColour($nombre){
         var_dump($nombre);
-        $sentencia = $this->db->prepare("INSERT INTO color nombre VALUES ?");
+        $sentencia = $this->db->prepare('INSERT INTO color (nombre) VALUES ?');
         $sentencia->execute(array($nombre));
         }
 
@@ -43,7 +43,7 @@ class ColourModel{
     //Edita una cerveza
     function editBeer($id_color,$nombre){
       $sentencia = $this->db->prepare('UPDATE color SET nombre=? WHERE id_color=?');
-      $sentencia->execute(array($nombre, $id_color));
+      $sentencia->execute(array($id_color,$nombre));
     }
 
     
