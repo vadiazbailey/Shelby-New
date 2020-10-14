@@ -56,6 +56,7 @@
         </p>
         <p>
             Color:
+          
             <select name="color">
                 {foreach from=$colour item=color }
                     <option value="{$color->id_color}">{$color->nombre}</option>
