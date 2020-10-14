@@ -67,15 +67,11 @@ class BeerController{
      //Edita una cerveza
      public function editBeer($params = null){
         $id_cerveza = $params[':ID'];
-        $beer = $this->beerModel->getBeer($id_cerveza);
-        
+        $beer = $this->beerModel->getBeer($id_cerveza); 
         $this->beerView->mostrarFormEditBeer($beer);
         header ("Location: " . CERVEZA);
         
      }
-
-
-     
 
     function mostrarCervezaActualizada(){
         $estilo=$_POST['estilo'];
@@ -104,10 +100,7 @@ class BeerController{
         if (empty($color)){
             die("color vacio");
         }
-       
-            
-            $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
-        
+        $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
         header("Location: " . CERVEZA);
     }
 

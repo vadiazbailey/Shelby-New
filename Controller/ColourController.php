@@ -41,20 +41,18 @@ class ColourController{
     function editColor($params = null){
         $id_color = $params[':ID'];
         $color = $this->colourModel->getColour($id_color);
-        var_dump($color);
         $this->colourView->mostrarFormEditColor($color);
         header("Location: " . COLOR);
     }
 
     function mostrarColorActualizado(){
         $nombre = $_POST ['nombre'];
-        $id = $_POST ['id'];
-        if (!empty($nombre)){
-            var_dump($nombre);
-            $this->colourModel->editColor($nombre, $id);
+        $id = $_POST ['id_color'];
+        if (empty($nombre)){
+            die("estilo vacio");
         }
-        header("Location: " . COLOR);
-        
+        $this->colourModel->editColor($nombre, $id);
+       // header("Location: " . COLOR);   
     }
 
     //Función que elimina un color

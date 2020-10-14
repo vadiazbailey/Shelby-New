@@ -22,7 +22,7 @@ class ColourModel{
     function getColour($id_color){
         $sentencia = $this->db->prepare("SELECT * FROM color WHERE id_color= ?");
         $sentencia->execute(array($id_color));
-        $colour = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        $colour = $sentencia->fetch(PDO::FETCH_OBJ);
         return $colour;    
     }
 
@@ -41,7 +41,7 @@ class ColourModel{
     
          
         //Edita una cerveza
-        function editColor($id_color,$nombre){
+        function editColor($nombre, $id_color){
           $sentencia = $this->db->prepare('UPDATE color SET nombre=? WHERE id_color=?');
           $sentencia->execute(array($nombre));
         }
