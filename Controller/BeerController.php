@@ -66,10 +66,13 @@ class BeerController{
    
      //Edita una cerveza
      public function editBeer($params = null){
+       
         $id_cerveza = $params[':ID'];
-        $beer = $this->beerModel->getBeer($id_cerveza); 
-        $this->beerView->mostrarFormEditBeer($beer);
-        header ("Location: " . CERVEZA);
+        $beer = $this->beerModel->getBeer($id_cerveza);
+        $colour=$this->colourModel->getColours();
+        $this->beerView->mostrarFormEditBeer($beer,$colour);
+        //header ("Location: " . CERVEZA);
+
         
      }
 

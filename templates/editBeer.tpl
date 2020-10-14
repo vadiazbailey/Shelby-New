@@ -23,7 +23,18 @@
             </p>
             <p>
             Color:
-            <input class="id_color" type="text" name="color" value="{$cerveza->nombre}">
+            
+            <select name="color">
+            
+            {foreach from=$colors item=colorTipo}
+                {if $colorTipo->id_color == $cerveza->id_color}
+                    <option value="{$colorTipo->id_color}" selected>{$colorTipo->nombre}</option>    
+                {else}
+                <option value="{$colorTipo->id_color}">{$colorTipo->nombre}</option>
+                    
+                {/if}
+            {/foreach}
+            </select>
             </p>
 
        <input id="id_cerveza" name="id_cerveza" type="hidden" value="{$cerveza->id_cerveza}">
