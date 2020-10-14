@@ -17,7 +17,9 @@ class ColourView{
     }
 
     function mostrarFormEditColor($color){
-        $this->smarty->assign('color', $color);        
+        //var_dump($color);
+        //die();
+        $this->smarty->assign('nombre', $color);        
         $this ->smarty-> display('templates/editColor.tpl');
 
     }

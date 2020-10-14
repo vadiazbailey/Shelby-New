@@ -36,6 +36,5 @@ class BeerView{
         $this->smarty->assign('cerveza', $beer);
         $this->smarty->assign('colors', $colors);
         $this ->smarty-> display('templates/editBeer.tpl');
-
     }
 }

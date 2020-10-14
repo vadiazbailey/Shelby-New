@@ -46,12 +46,16 @@ class ColourController{
     }
 
     function mostrarColorActualizado(){
+        var_dump($_POST);
         $nombre = $_POST ['nombre'];
-        $id = $_POST ['id_color'];
+        $id_color = $_POST ['id_color'];
         if (empty($nombre)){
             die("estilo vacio");
         }
-        $this->colourModel->editColor($nombre, $id);
+        if (empty($id)){
+            die("id vacio");
+        }
+        $this->colourModel->editColor($nombre, $id_color);
        // header("Location: " . COLOR);   
     }
 

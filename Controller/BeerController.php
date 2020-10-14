@@ -53,7 +53,7 @@ class BeerController{
         $color=$_POST['color'];
         if(!empty($estilo)&& !empty($volumen)&& !empty($graduacion_alcoholica)&& !empty($precio)&&!empty($cantidad)&&!empty($color)){
             $this->beerModel->insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color);
-            header("Location: " . CERVEZAS);
+            header("Location: " . CERVEZA);
         }     
     }
 

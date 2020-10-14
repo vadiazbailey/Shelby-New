@@ -45,13 +45,8 @@ class BeerModel{
        try {
         $sentencia = $this->db->prepare("UPDATE cerveza SET estilo=?, volumen=?, 
         graduacion_alcoholica=?, precio=?, cantidad=?, id_color=?  WHERE id_cerveza=?");
-      
-        $result =
         $sentencia->execute(array($estilo, $volumen, $graduacion_alcoholica, $precio,
         $cantidad, $color, $id_cerveza));
-      
-                       
-           //code...
        } catch (\Exception $th) {
            var_dump($th);
            die();

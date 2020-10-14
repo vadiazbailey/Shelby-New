@@ -41,9 +41,8 @@
     $r->addRoute("insertColour", "POST", "ColourController", "insertColour");
     $r->addRoute("editColour/:ID", "GET", "ColourController", "editColor");
     $r->addRoute("deleteColour/:ID", "GET", "ColourController", "deleteColor");
-    $r->addRoute("mostrarColorActualizado", "GET", "ColourController", "mostrarColorActualizado");
+    $r->addRoute("mostrarColorActualizado", "POST", "ColourController", "mostrarColorActualizado");
     
-
     //Ruta por defecto.
     $r->setDefaultRoute("BeerController", "showHome");
 
