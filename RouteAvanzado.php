@@ -25,7 +25,7 @@
     $r->addRoute("contacto", "GET", "BeerController", "showContacto");
 
     //Rutas del usuario
-    $r->addRoute("login", "GET", "UserController", "Login");
+    $r->addRoute("login", "GET", "UserController", "showLogin");
     $r->addRoute("logout", "GET", "UserController", "Logout");
     $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");
 

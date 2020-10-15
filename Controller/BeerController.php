@@ -9,6 +9,7 @@ class BeerController{
     private $beerModel;
     private $colourModel;
     private $beerView;
+    private $userController;
     
 
     //Constructor
@@ -16,35 +17,49 @@ class BeerController{
         $this->beerModel = new BeerModel();
         $this->colourModel = new ColourModel();
         $this->beerView = new BeerView();
+        $this->userController = new UserController();
+   
     }
 
     
 
     //Metodos
     function showHome(){
-        $this-> beerView-> showHome();
+        $this->beerView-> showHome();
     }
 
     //Me muestra las cervezas
     function showBeers(){
+       
         $beers = $this->beerModel->getBeers();
         $colour = $this->colourModel->getColours();
-        $this-> beerView-> showBeers($beers, $colour);
+        //$logged_in= $this->userController->checkLoggedIn();
+        $this->beerView->showBeers($beers, $colour);
+       // if($logged_in == true){
+         //   $userLog= $_SESSION['MAIL'];
+
+       // }else{
+         //   $user="";
+       // }
     }
 
     //Me muestra el html de reserva
     function showReserva(){
-        $this-> beerView-> showReserva();
+        $this->beerView->showReserva();
     }
 
     //Me muestra el html de contacto
     function showContacto(){
-        $this-> beerView-> showContacto();
+        $this->beerView->showContacto();
     }
 
     //Me inserta una cerveza
     function insertBeer(){
-        //$logeado = $this->userName->checkLoggedIn();     
+       // $logged_in= $this->userController->checkLoggedIn();
+       // if($logged_in == true){
+       //     $user= $_SESSION['MAIL'];
+
+        //}
         $estilo=$_POST['cerveza'];
         $volumen=$_POST['volumen'];
         $graduacion_alcoholica=$_POST['graduacion'];
@@ -53,33 +68,42 @@ class BeerController{
         $color=$_POST['color'];
         if(!empty($estilo)&& !empty($volumen)&& !empty($graduacion_alcoholica)&& !empty($precio)&&!empty($cantidad)&&!empty($color)){
             $this->beerModel->insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color);
-            header("Location: " . CERVEZAS);
+            header("Location: " . CERVEZA);
         }     
     }
 
    //Elimina una cerveza
    public function deleteBeer($params = null){
     $id_cerveza = $params[':ID'];
-    $this->beerModel->deleteBeer($id_cerveza);
-    header ("Location: " . CERVEZA);
+   // $logged_in= $this->userController->checkLoggedIn();
+    //if($logged_in == true){
+    //    $userLog= $_SESSION['MAIL'];
+        $this->beerModel->deleteBeer($id_cerveza);
+        header ("Location: " . CERVEZA);
+   
 }
    
      //Edita una cerveza
      public function editBeer($params = null){
-       
         $id_cerveza = $params[':ID'];
         $beer = $this->beerModel->getBeer($id_cerveza);
         $colour=$this->colourModel->getColours();
-        $this->beerView->mostrarFormEditBeer($beer,$colour);
-        //header ("Location: " . CERVEZA);
-
+        $logged_in= $this->userController->checkLoggedIn();
+        if($logged_in == true){
+            $userLog= $_SESSION['MAIL'];
+            $this->beerView->mostrarFormEditBeer($beer,$colour);
+        }else{
+            header ("Location: " . CERVEZA);
+        }
+       
         
      }
 
-
-     
-
     function mostrarCervezaActualizada(){
+        $logged_in= $this->userController->checkLoggedIn();
+    if($logged_in == true){
+        $user= $_SESSION['MAIL'];
+    }
         $estilo=$_POST['estilo'];
         $volumen=$_POST['volumen'];
         $graduacion_alcoholica=$_POST['graduacion_alcoholica'];
@@ -106,10 +130,7 @@ class BeerController{
         if (empty($color)){
             die("color vacio");
         }
-       
-            
-            $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
-        
+     $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
         header("Location: " . CERVEZA);
     }
 

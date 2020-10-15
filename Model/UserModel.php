@@ -11,9 +11,10 @@ function __construct(){
     $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 
-function GetUser($user){
+//Va a buscar el mail
+function getByEmail($userName){
    $sentencia = $this->db->prepare("SELECT * FROM usuario WHERE mail=?");
-   $sentencia->execute(array($user));
+   $sentencia->execute(array($userName));
    return  $sentencia->fetch(PDO::FETCH_OBJ);
     
 }
