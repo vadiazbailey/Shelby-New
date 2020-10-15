@@ -16,10 +16,10 @@ class ColourView{
         $this ->smarty-> display('templates/tablaColor.tpl');
     }
 
-    function mostrarFormEditColor($color){
-        $this->smarty->assign('color', $color);        
-        $this ->smarty-> display('templates/editColor.tpl');
-
+    function mostrarFormEditColor($color, $id_color){
+        $this->smarty->assign('color', $color);
+        $this->smarty->assign('id', $id_color);
+        $this ->smarty->display('templates/editColor.tpl');
     }
 
 

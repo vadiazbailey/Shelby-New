@@ -130,7 +130,7 @@ class BeerController{
         if (empty($color)){
             die("color vacio");
         }
-     $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
+        $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
         header("Location: " . CERVEZA);
     }
 

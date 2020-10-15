@@ -34,7 +34,6 @@ class BeerView{
     function mostrarFormEditBeer($beer,$colors){
         $this->smarty->assign('cerveza', $beer);
         $this->smarty->assign('colors', $colors);
-        $this->smarty-> display('templates/editBeer.tpl');
-
+        $this ->smarty-> display('templates/editBeer.tpl');
     }
 }
