@@ -42,15 +42,9 @@ class ColourModel{
          
         //Edita una cerveza
         function editColor($nombre, $id_color){
-          try{
-              $sentencia = $this->db->prepare("UPDATE color SET nombre=? WHERE id_color=?");;
-              $sentencia->execute(array($nombre, $id_color));
-
-          }catch (\Exception $th) {
-            var_dump($th);
-            die();
-        }
-        }
+            $sentencia = $this->db->prepare("UPDATE color SET nombre=? WHERE id_color=?");;
+            $sentencia->execute(array($nombre, $id_color));
+      }
     
 
     
