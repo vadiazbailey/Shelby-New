@@ -9,7 +9,7 @@ class BeerController{
     private $beerModel;
     private $colourModel;
     private $beerView;
-    private $userController;
+    
     
 
     //Constructor
@@ -17,8 +17,7 @@ class BeerController{
         $this->beerModel = new BeerModel();
         $this->colourModel = new ColourModel();
         $this->beerView = new BeerView();
-        $this->userController = new UserController();
-   
+        
     }
 
     
@@ -55,11 +54,7 @@ class BeerController{
 
     //Me inserta una cerveza
     function insertBeer(){
-       // $logged_in= $this->userController->checkLoggedIn();
-       // if($logged_in == true){
-       //     $user= $_SESSION['MAIL'];
-
-        //}
+    
         $estilo=$_POST['cerveza'];
         $volumen=$_POST['volumen'];
         $graduacion_alcoholica=$_POST['graduacion'];
@@ -73,7 +68,7 @@ class BeerController{
     }
 
    //Elimina una cerveza
-   public function deleteBeer($params = null){
+   function deleteBeer($params = null){
     $id_cerveza = $params[':ID'];
    // $logged_in= $this->userController->checkLoggedIn();
     //if($logged_in == true){
@@ -81,29 +76,19 @@ class BeerController{
         $this->beerModel->deleteBeer($id_cerveza);
         header ("Location: " . CERVEZA);
    
-}
+
    
-     //Edita una cerveza
-     public function editBeer($params = null){
+    //Edita una cerveza
+    function editBeer($params = null){
+
         $id_cerveza = $params[':ID'];
         $beer = $this->beerModel->getBeer($id_cerveza);
         $colour=$this->colourModel->getColours();
-        $logged_in= $this->userController->checkLoggedIn();
-        if($logged_in == true){
-            $userLog= $_SESSION['MAIL'];
-            $this->beerView->mostrarFormEditBeer($beer,$colour);
-        }else{
-            header ("Location: " . CERVEZA);
-        }
-       
-        
+        $this->beerView->mostrarFormEditBeer($beer,$colour);
+        //header ("Location: " . CERVEZA);
      }
 
     function mostrarCervezaActualizada(){
-        $logged_in= $this->userController->checkLoggedIn();
-    if($logged_in == true){
-        $user= $_SESSION['MAIL'];
-    }
         $estilo=$_POST['estilo'];
         $volumen=$_POST['volumen'];
         $graduacion_alcoholica=$_POST['graduacion_alcoholica'];
@@ -111,7 +96,7 @@ class BeerController{
         $cantidad=$_POST['cantidad'];
         $color=$_POST['color'];
         $id=$_POST['id_cerveza'];
-        
+
         if (empty($estilo)){
             die("estilo vacio");
         }
@@ -133,7 +118,4 @@ class BeerController{
         $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
         header("Location: " . CERVEZA);
     }
-
-
-   
 }
