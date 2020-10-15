@@ -5,7 +5,7 @@
     <base href="{BASE_URL}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{$title}</title>
+    <title>Shelby Beer</title>
     <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/estilo.css">
@@ -26,7 +26,7 @@
 
     </header>
 
-    {*<div class="btn-menu"><a href="#">Menú</a></div>*}
+    <div class="btn-menu"><a href="#">Menú</a></div>
     <!--       navegador          -->
     <nav class="navegador">
 

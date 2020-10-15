@@ -14,66 +14,54 @@ class UserController{
         $this->userModel = new UserModel();
     }
 
+    function Login(){
+        $this->userView->showLogin();
+    }
 
-
-   
-   // function loginForm(){
-     //   $logged_in = $this->userController->checkLoggedIn();
-      //  if ($logged_in == true){
-      //      header("Location: ". HOME);
-     //   }else{
-     //       $user = "";
-      //      $this->usersView->showLogin($logged_in, $user); 
-      //  }
-   // }
-   function showLogin(){
-       $this->userView->showLoginForm();
-   }
-
-    
+    function Logout(){
+        session_start();
+        session_destroy();
+        header("Location:" .LOGIN);
+    }
+     
     
     function verifyUser(){
-        $userName = $_POST["email"];
-        $password = $_POST["password"];
-        
+        $userName = $_POST["input_user"];
+        $password = $_POST["input_pass"];
+
         
         if(!empty($userName)&& !empty($password)){
-            
-            //Obtengo el usuario
-                $userLog= $this->userModel->getByEmail($userName);
-                
-                    if(isset($userLog) && $userLog){
-                        // Existe el usuario
-                        if ($userLog &&password_verify($password, $userLog->password)){
-                           session_start();
-                           $_SESSION['MAIL'] = $userLog->mail;
-                         
-                            header("Location: ". HOME);                    
-                        }else{
-                          $this->userView->showLoginForm("Contraseña incorrecta");
-                        
-                        }
+            if(isset($userName)){
+                $userFromDB= $this->userModel->GetUser($userName);
+                if(isset($userFromDB)&& $userFromDB){
+
+                    if (password_verify($password, $userFromDB->password)){
+                        session_start();
+                        $_SESSION['MAIL'] = $userFromDB->mail;
+                        header("Location: " .HOME);
                     }else{
-                            $this->userView->showLoginForm("Usuario incorrecto");
-                           
-                        }
+                        $this->userView->showLogin("Contraseña incorrecta");
+                    }
+                }else{
+                    // No existe el user en la DB
+                    $this->userView->showLogin("Usuario incorrecto");
                 }
-        
+            }
         }
+    }
         
         
         //Verifica que se haya iniciado sesion
-        function checkLoggedIn(){
+        private function checkLoggedIn(){
             session_start();
             if(!isset($_SESSION["MAIL"])){
                 header("Location: ".LOGIN);
+                
             }
         }
-        //funcion que CIERRA SESION
-        function Logout(){
-            session_start();
-            session_destroy();
-            header("Location:" .LOGIN);
-        }
-    }
+        
+
+      
+        
     
+}
