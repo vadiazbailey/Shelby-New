@@ -355,7 +355,7 @@ tbody {
 }
 
 table,td,a{
-    color: black;
+    color:whithe;
 }
 
 table, td, tr {
@@ -370,8 +370,11 @@ table {
     font-family: 'Quicksand';
 }
 
+button{
+    background-color: rgb(41, 41, 41);
+}
 tr:hover td {
-    background-color: gray;
+    background-color: rgb(77, 73, 73);
     color: black;
 }
 
