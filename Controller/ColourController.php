@@ -24,6 +24,12 @@ class ColourController{
     //Función que muestra un color
     public function getColour($id_color){
         $colour = $this->colourModel->getColour($id_color);
+        $loggedIn = $this->userController->checkLoggedIn();
+        if ($loggedIn == true){
+            $user = $_SESSION["ALIAS"];
+        }else{
+            $user = "";
+        } 
         $this->view->showColours($colour);
     }
 
@@ -32,7 +38,13 @@ class ColourController{
         $nombre=($_POST['nombre']);
         if (isset($nombre)){        
                 var_dump($nombre);
-            $this->colourModel->insertColour($nombre);     
+            $this->colourModel->insertColour($nombre);
+            $loggedIn = $this->userController->checkLoggedIn();
+            if ($loggedIn == true){
+                $user = $_SESSION["ALIAS"];
+            }else{
+                $user = "";
+            }      
         }      
         header("Location: " . COLOR);
     }
@@ -41,6 +53,12 @@ class ColourController{
     function editColor($params = null){
         $id_color = $params[':ID'];
         $color = $this->colourModel->getColour($id_color);
+        $loggedIn = $this->userController->checkLoggedIn();
+        if ($loggedIn == true){
+            $user = $_SESSION["ALIAS"];
+        }else{
+            $user = "";
+        } 
         $this->colourView->mostrarFormEditColor($color, $id_color);
     }
 
@@ -48,6 +66,12 @@ class ColourController{
         $nombre = $_POST ['nombre'];
         $id_color = $_POST ['id_color'];
         $this->colourModel->editColor($nombre, $id_color);
+        $loggedIn = $this->userController->checkLoggedIn();
+        if ($loggedIn == true){
+            $user = $_SESSION["ALIAS"];
+        }else{
+            $user = "";
+        } 
         header("Location: " . COLOR);
     }
 
@@ -56,6 +80,12 @@ class ColourController{
         $id_color = $params[':ID'];
         $color = $this->colourModel->getColour($id_color);
         $this->colourModel->DeleteColor($id_color);
+        $loggedIn = $this->userController->checkLoggedIn();
+        if ($loggedIn == true){
+            $user = $_SESSION["ALIAS"];
+        }else{
+            $user = "";
+        } 
         header ("Location: " . COLOR);
     }
 

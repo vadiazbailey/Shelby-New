@@ -26,8 +26,9 @@
 
     //Rutas del usuario
     $r->addRoute("login", "GET", "UserController", "Login");
-    $r->addRoute("logout", "GET", "UserController", "Logout");
+    $r->addRoute("logout", "GET", "UserController", "Login");
     $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");
+    $r->addRoute("loggedIn","GET","UserController","showHomeLog");
 
 
 

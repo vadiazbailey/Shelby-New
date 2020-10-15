@@ -1,4 +1,4 @@
-{include file="header.tpl" }
+{include 'templates/header.tpl'}
 
 <!--       Scroll de imagenes          -->
 

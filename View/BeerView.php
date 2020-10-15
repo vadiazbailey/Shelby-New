@@ -11,7 +11,9 @@ class BeerView{
         $this->smarty->assign('BASEURL', BASE_URL);
     }
 
-    function showHome(){
+    function showHome($log,$user){
+        $this->smarty->assign('loggedIn',$log);
+        $this->smarty->assign('user',$user);
         $this->smarty->assign('title', 'Shelby Beer');
         $this ->smarty-> display('templates/home.tpl');
     }
@@ -32,9 +34,11 @@ class BeerView{
 
    
 
-    function mostrarFormEditBeer($beer,$colors){
+    function mostrarFormEditBeer($beer,$colors,$log,$user){
         $this->smarty->assign('cerveza', $beer);
         $this->smarty->assign('colors', $colors);
+        $this->smarty->assign('loggeIn', $log);
+        $this->smarty->assign('user', $user);
         $this ->smarty-> display('templates/editBeer.tpl');
     }
 }

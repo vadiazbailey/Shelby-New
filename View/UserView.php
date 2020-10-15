@@ -22,4 +22,10 @@ class UserView{
         $this->smarty->display('templates/login.tpl');
     }
 
+    function homeLoggedIn($loggedIn, $usuario){
+        $this->smarty->assign('loggedIn', $loggedIn);
+        $this->smarty->assign('usuario', $usuario);
+        $this->smarty->display('template/Log/homeLog.tpl');
+    }
+
 }

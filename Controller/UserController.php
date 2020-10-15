@@ -50,13 +50,28 @@ class UserController{
         }
     }
         
+        function showHomeLog(){
+            $loggedIn=$this->checkLoggedIn();
+           
+            if ($loggedIn==true) {
+                header("Location: " .HOME);
+                echo"ESTOY LOGEADO";
+            }
+
+            $usuario = "";
+            $this->usersView->showLogin($loggedIn, $usuario); 
+            echo"NO ESTOY LOGEADO";
+        }
+
         
         //Verifica que se haya iniciado sesion
-        private function checkLoggedIn(){
+        function checkLoggedIn(){
             session_start();
             if(!isset($_SESSION["MAIL"])){
-                header("Location: ".LOGIN);
-                
+               return  false;
+                // header("Location: ".LOGIN);
+            }else{
+                return true;
             }
         }
         
