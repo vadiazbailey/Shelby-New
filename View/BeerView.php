@@ -18,9 +18,11 @@ class BeerView{
         $this ->smarty-> display('templates/home.tpl');
     }
 
-    function showBeers($beers, $colour){
+    function showBeers($beers, $colour,$log,$user){
         $this->smarty->assign('cervezas', $beers);
         $this->smarty->assign('colour', $colour);
+        $this->smarty->assign('loggedIn',$log);
+        $this->smarty->assign('user',$user);
         $this ->smarty-> display('templates/table.tpl');
     }
 
@@ -37,7 +39,7 @@ class BeerView{
     function mostrarFormEditBeer($beer,$colors,$log,$user){
         $this->smarty->assign('cerveza', $beer);
         $this->smarty->assign('colors', $colors);
-        $this->smarty->assign('loggeIn', $log);
+        $this->smarty->assign('loggedIn', $log);
         $this->smarty->assign('user', $user);
         $this ->smarty-> display('templates/editBeer.tpl');
     }

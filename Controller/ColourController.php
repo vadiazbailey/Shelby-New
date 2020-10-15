@@ -7,30 +7,31 @@ class ColourController{
      //Variables
     private $colourModel;
     private $colourView;
+    private $userController;
 
     //Constructor
     function __construct(){
         $this->colourModel = new ColourModel();
         $this->colourView = new ColourView();
+        $this->userController = new UserController();
     }
 
     //Me muestra los colores de cerveza
     function showColours(){
         $colour = $this->colourModel->getColours();
-        $this->colourView->showColours($colour);
+        $loggedIn = $this->userController->checkLoggedIn();
+        $user = $_SESSION["MAIL"];
+        $this->colourView->showColours($colour,$loggedIn,$user);
 
     }
 
     //Función que muestra un color
     public function getColour($id_color){
-        $colour = $this->colourModel->getColour($id_color);
         $loggedIn = $this->userController->checkLoggedIn();
-        if ($loggedIn == true){
-            $user = $_SESSION["ALIAS"];
-        }else{
-            $user = "";
-        } 
-        $this->view->showColours($colour);
+        $user = $_SESSION["MAIL"];
+        $colour = $this->colourModel->getColour($id_color);
+       
+        $this->view->showColours($colour,$loggedIn,$user);
     }
 
     //Me agraga un color de cerveza
@@ -43,10 +44,10 @@ class ColourController{
             if ($loggedIn == true){
                 $user = $_SESSION["ALIAS"];
             }else{
-                $user = "";
+                header("Location: " . COLOR);
+             
             }      
         }      
-        header("Location: " . COLOR);
     }
 
     //Funcion que me modifica un color
@@ -54,12 +55,12 @@ class ColourController{
         $id_color = $params[':ID'];
         $color = $this->colourModel->getColour($id_color);
         $loggedIn = $this->userController->checkLoggedIn();
-        if ($loggedIn == true){
-            $user = $_SESSION["ALIAS"];
-        }else{
-            $user = "";
-        } 
-        $this->colourView->mostrarFormEditColor($color, $id_color);
+            if ($loggedIn == true){
+                $user = $_SESSION["MAIL"];
+                $this->colourView->mostrarFormEditColor($color, $id_color,$loggedIn,$user);
+            }else{
+                header("Location: " . COLOR);
+            } 
     }
 
     function mostrarColorActualizado(){

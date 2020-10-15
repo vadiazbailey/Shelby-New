@@ -19,7 +19,7 @@
         <div class="logo">
             <img id="logo-shelby" src="imagenes/Shelby Beer logo.png" alt="logo" srcset="">
            {if $loggedIn==true}
-            <li class="li-item"><a href="">HOLA</a></li>
+            <li class="li-item"><a href="user">Hola, {$user}</a></li>
             <li class="li-item"><a href="logout">Logout</a></li>
             {else}
             <li class="li-item"><a href="login">Login</a></li>

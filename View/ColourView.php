@@ -11,14 +11,18 @@ class ColourView{
         $this->smarty->assign('BASEURL', COLOR);
     }
 
-    function showColours($colour){
+    function showColours($colour,$loggedIn,$user){
         $this->smarty->assign('colour', $colour);
-        $this ->smarty-> display('templates/tablaColor.tpl');
+        $this->smarty->assign('loggedIn', $loggedIn);
+        $this->smarty->assign('user', $user);
+        $this->smarty-> display('templates/tablaColor.tpl');
     }
 
-    function mostrarFormEditColor($color, $id_color){
+    function mostrarFormEditColor($color, $id_color,$loggedIn,$user){
         $this->smarty->assign('color', $color);
         $this->smarty->assign('id', $id_color);
+        $this->smarty->assign('loggedIn', $loggedIn);
+        $this->smarty->assign('user', $user);
         $this ->smarty->display('templates/editColor.tpl');
     }
 

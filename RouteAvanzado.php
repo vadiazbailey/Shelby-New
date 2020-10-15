@@ -12,8 +12,8 @@
     define("COLOR", BASE_URL.'color');
     define("RESERVA", BASE_URL.'reserva');
     define("CONTACTO", BASE_URL.'contacto');
-    define("LOGIN", BASE_URL.'Login');
-    define("LOGOUT", BASE_URL.'Logout');
+    define("LOGIN", BASE_URL.'login');
+    define("LOGOUT", BASE_URL.'logout');
 
     $r = new Router();
 
@@ -26,9 +26,9 @@
 
     //Rutas del usuario
     $r->addRoute("login", "GET", "UserController", "Login");
-    $r->addRoute("logout", "GET", "UserController", "Login");
+    $r->addRoute("logout", "GET", "UserController", "Logout");
     $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");
-    $r->addRoute("loggedIn","GET","UserController","showHomeLog");
+    $r->addRoute("loggedIn","GET","UserController","showLogin");
 
 
 

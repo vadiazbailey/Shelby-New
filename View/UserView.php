@@ -13,19 +13,16 @@ class UserView{
     }
 
 
-    function showLogin(){
+    function showLogin($loggedIn,$message=""){
        // $smarty->assign('titulo_s', $this->title);
-      //  $smarty->assign('message', $message);
-
-        //Muestro el template
-       // $this->smarty->assign('user',$user);
+       
+       //Muestro el template
+       $this->smarty->assign('loggedIn', $loggedIn);
+       $this->smarty->assign('message', $message);
+ 
         $this->smarty->display('templates/login.tpl');
     }
 
-    function homeLoggedIn($loggedIn, $usuario){
-        $this->smarty->assign('loggedIn', $loggedIn);
-        $this->smarty->assign('usuario', $usuario);
-        $this->smarty->display('template/Log/homeLog.tpl');
-    }
+    
 
 }

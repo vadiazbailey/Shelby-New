@@ -26,9 +26,12 @@ class BeerController{
     //Metodos
     function showHome(){
         $loggedIn = $this->userController->checkLoggedIn();
-        $user = $_SESSION["MAIL"];
-
-        $this->beerView->showHome($loggedIn,$user);
+        if ($loggedIn == true){
+            $user = $_SESSION["MAIL"];
+            $this->beerView->showHome($loggedIn,$user);
+        }else{
+            header("Location: " .LOGIN);
+        }
     }
 
     //Me muestra las cervezas
@@ -41,7 +44,7 @@ class BeerController{
         }else{
             $user = "";
         } 
-        $this->beerView->showBeers($beers, $colour);
+        $this->beerView->showBeers($beers, $colour,$loggedIn,$user);
     }
 
     //Me muestra el html de reserva
@@ -80,13 +83,15 @@ class BeerController{
     $id_cerveza = $params[':ID'];
     $this->beerModel->deleteBeer($id_cerveza);
     $loggedIn = $this->userController->checkLoggedIn();
-    if ($loggedIn == true){
-        $user = $_SESSION["MAIL"];
-    }else{
-        $user = "";
-    } 
-    header ("Location: " . CERVEZA);
-}
+            if ($loggedIn == true){
+                $user = $_SESSION["MAIL"];
+            }else{
+                $user = "";
+            } 
+            header("Location: " . CERVEZA);
+        }     
+    
+
    
      //Edita una cerveza
      public function editBeer($params = null){

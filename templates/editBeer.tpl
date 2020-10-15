@@ -33,16 +33,19 @@
             {foreach from=$colors item=colorTipo}
                 {if $colorTipo->id_color == $cerveza->id_color}
                     <option value="{$colorTipo->id_color}" selected>{$colorTipo->nombre}</option>    
-                {else}
-                <option value="{$colorTipo->id_color}">{$colorTipo->nombre}</option>
+                    {else}
+                    <option value="{$colorTipo->id_color}">{$colorTipo->nombre}</option>
                     
                 {/if}
             {/foreach}
             </select>
             </p>
+            {if $loggedIn==true}
+                
+                <input id="id_cerveza" name="id_cerveza" type="hidden" value="{$cerveza->id_cerveza}">
+                 <button type="submit" class="enviarDatos">Modificar</button>
+        {/if}
 
-       <input id="id_cerveza" name="id_cerveza" type="hidden" value="{$cerveza->id_cerveza}">
-        <button type="submit" class="enviarDatos">Modificar</button>
     </form>
 
 {include file="footer.tpl" }
