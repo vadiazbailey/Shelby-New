@@ -49,11 +49,11 @@ class ColourController{
             $this->colourModel->insertColour($nombre);
             $loggedIn = $this->userController->checkLoggedIn();
             if ($loggedIn == true){
-                $user = $_SESSION["ALIAS"];
+                $user = $_SESSION["MAIL"];
             }else{
-                header("Location: " . COLOR);
-             
-            }      
+                $user = "";
+            }  
+            header("Location: " . COLOR);    
         }      
     }
 
