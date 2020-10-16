@@ -14,8 +14,8 @@ class UserView{
 
 
     function showLogin($loggedIn,$message=""){
-       // $smarty->assign('titulo_s', $this->title);
-       
+      
+    
        //Muestro el template
        $this->smarty->assign('loggedIn', $loggedIn);
        $this->smarty->assign('message', $message);

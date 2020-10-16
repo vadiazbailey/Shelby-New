@@ -334,6 +334,7 @@ hr {
     width: 40px;
 }
 
+
 /*------tabla-----*/
 
 #descripcion-cervezas {
@@ -363,11 +364,21 @@ table, td, tr {
 }
 
 table {
-    width: 50%;
+    justify-content: center;
+    width: 75%;
     height: 350px;
-    text-align: left;
+    text-align: center;
     margin: 30px;
     font-family: 'Quicksand';
+    font-size: 27px;
+}
+
+.agregar-producto{
+    margin-left: 300px;
+    margin-top: 40px;
+    font-family: 'Quicksand';
+    font-size: 25px;
+
 }
 
 button{
@@ -461,4 +472,30 @@ tr:hover td {
 
 .reserva {
     align-items: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+    font-family:'Quicksand', sans-serif;
+    font-size: 25px;
+    
+   
+
+}
+.userName,.password{
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+}
+.userName,label .password,label{
+    
+    margin-left: 30px;
+}
+.password,button{
+    font-family:'Quicksand', sans-serif;
+    
+    font-size: 20px;
+    
 }
