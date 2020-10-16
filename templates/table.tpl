@@ -31,14 +31,7 @@
     </table>
     
     {include file="insertBeer.tpl" }
-
-    <figure>
-        <a href="#menu-cervezas"><img src="imagenes/menu.png" alt=""></a>
-    </figure>
-
-
 </aside>
 </article>
 
-{include file="cervezas.tpl" }
 {include file="footer.tpl" }

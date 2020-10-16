@@ -3,8 +3,6 @@
 <!--       Scroll de imagenes          -->
 
 <div class="contenedor-imagenes">
-
-
     <div class="slider">
         <ul>
             <li><img src="imagenes/index.png" alt="index" /></li>
@@ -16,19 +14,9 @@
 </div>
 
 <article class="contenedor-quienes-somos">
-
     <hr>
-
     <h1>¿Quiénes somos?</h1>
-
-
-
-
-
     <section class="contenedor-historia">
-
-
-
         <div class="historia1">
             Shelby Beer es una cervecería artesanal tandilense que empezó su producción a principio 2014. El
             proyecto nació en un contexto de auge cervecero a nivel nacional y más aún local. Con un grupo
@@ -45,9 +33,6 @@
             a cocinar nuestras primeras cervezas.
         </div>
 
-
-
-
         <div class="historia2">
             La mística cervecera y el entusiasmo que tenemos por la elaboración experimental hicieron que este grupo
             de emprendedores eligiera la producción propia como forma de vida. Somos una sociedad de apasionados por
@@ -60,13 +45,12 @@
                 <img src="imagenes/dibujo.png">
             </figure>
         </div>
-
     </section>
-
-
 </article>
 
 <hr>
+
+{include file="cervezas.tpl"}
 
 <figure class="ima-historia">
     <img src="imagenes/fabrica.jpg" alt="" srcset="">
