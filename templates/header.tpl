@@ -24,9 +24,7 @@
             {else}
             <li class="li-item"><a href="login">Login</a></li>
             <li class="li-item"><a href="logout">Logout</a></li>
-             {/if}
-               
-
+            {/if}
         </div>
 
 
