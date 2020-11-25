@@ -20,17 +20,24 @@ class ColourController{
     function showColours(){
         $colour = $this->colourModel->getColours();
         $loggedIn = $this->userController->checkLoggedIn();
-        $user = $_SESSION["MAIL"];
+        if ($loggedIn == true){
+            $user = $_SESSION["MAIL"];
+        }else{
+            $user = "";
+        }
         $this->colourView->showColours($colour,$loggedIn,$user);
 
     }
 
     //Función que muestra un color
     public function getColour($id_color){
-        $loggedIn = $this->userController->checkLoggedIn();
-        $user = $_SESSION["MAIL"];
         $colour = $this->colourModel->getColour($id_color);
-       
+        $loggedIn = $this->userController->checkLoggedIn();
+        if ($loggedIn == true){
+            $user = $_SESSION["MAIL"];
+        }else{
+            $user = "";
+        }
         $this->view->showColours($colour,$loggedIn,$user);
     }
 
@@ -42,11 +49,11 @@ class ColourController{
             $this->colourModel->insertColour($nombre);
             $loggedIn = $this->userController->checkLoggedIn();
             if ($loggedIn == true){
-                $user = $_SESSION["ALIAS"];
+                $user = $_SESSION["MAIL"];
             }else{
-                header("Location: " . COLOR);
-             
-            }      
+                $user = "";
+            }  
+            header("Location: " . COLOR);    
         }      
     }
 

@@ -19,7 +19,6 @@ class UserView{
        //Muestro el template
        $this->smarty->assign('loggedIn', $loggedIn);
        $this->smarty->assign('message', $message);
- 
         $this->smarty->display('templates/login.tpl');
     }
 

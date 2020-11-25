@@ -26,11 +26,15 @@ class BeerView{
         $this ->smarty-> display('templates/table.tpl');
     }
 
-    function showReserva(){
+    function showReserva($log, $user){
+        $this->smarty->assign('loggedIn',$log);
+        $this->smarty->assign('user',$user);
         $this ->smarty-> display('templates/reservas.tpl');
     }
 
-    function showContacto(){
+    function showContacto($log, $user){
+        $this->smarty->assign('loggedIn',$log);
+        $this->smarty->assign('user',$user);
         $this ->smarty-> display('templates/contacto.tpl');
     }
 

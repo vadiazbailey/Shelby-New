@@ -49,12 +49,25 @@ class BeerController{
 
     //Me muestra el html de reserva
     function showReserva(){
-        $this->beerView->showReserva();
+        $loggedIn = $this->userController->checkLoggedIn();
+        if($loggedIn){
+            $user = $_SESSION["MAIL"];
+        }else{
+            $user = "";
+        }
+        $this->beerView->showReserva($loggedIn, $user);
+
     }
 
     //Me muestra el html de contacto
     function showContacto(){
-        $this->beerView->showContacto();
+        $loggedIn = $this->userController->checkLoggedIn();
+        if($loggedIn){
+            $user = $_SESSION["MAIL"];
+        }else{
+            $user = "";
+        }
+        $this->beerView->showContacto($loggedIn, $user);
     }
 
     //Me inserta una cerveza

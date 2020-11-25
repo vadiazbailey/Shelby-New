@@ -1,8 +1,5 @@
+{include file="header.tpl" }
 {if $loggedIn == true}
-    {include 'templates/Log/headerLoggeado.tpl'}
-{else}
-    {include 'templates/Log/headerLoginPublico.tpl'}
-{/if}
 <form method="POST" action="mostrarCervezaActualizada" class="agregar-producto">
         <label>Edita la cerveza seleccionada: </label>
            <p>
@@ -47,5 +44,5 @@
         {/if}
 
     </form>
-
+{/if}
 {include file="footer.tpl" }
