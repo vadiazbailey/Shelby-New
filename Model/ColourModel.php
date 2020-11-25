@@ -31,13 +31,13 @@ class ColourModel{
         var_dump($nombre);
         $sentencia = $this->db->prepare('INSERT INTO color (nombre) VALUES (?)');
         $sentencia->execute(array($nombre));
-        }
+    }
 
           //Elimina una cerveza
-          function DeleteColor($color_id){
-            $sentencia = $this->db->prepare("DELETE FROM color WHERE id_color=?");
-            $sentencia->execute(array($color_id));
-        }
+    function DeleteColor($color_id){
+        $sentencia = $this->db->prepare("DELETE FROM color WHERE id_color=?");
+        $sentencia->execute(array($color_id));
+    }
     
          
         //Edita una cerveza

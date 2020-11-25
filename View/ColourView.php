@@ -18,6 +18,11 @@ class ColourView{
         $this->smarty-> display('templates/tablaColor.tpl');
     }
 
+    function showFiltroColor($colorFiltro){ 
+        $this->smarty->assign('colorFiltro', $colorFiltro); 
+        $this->smarty->display('templates/filtroColor.tpl');
+    }
+
     function mostrarFormEditColor($color, $id_color,$loggedIn,$user){
         $this->smarty->assign('color', $color);
         $this->smarty->assign('id', $id_color);

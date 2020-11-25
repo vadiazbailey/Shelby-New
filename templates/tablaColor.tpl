@@ -19,8 +19,9 @@
              {/if}
         {/foreach}
         <tbody id="tabla" class="tbody"></tbody>
-
-
     </table>
-    {include file="insertColour.tpl" }
-    {include file="footer.tpl" }
+    
+    {include file="filtroColor.tpl"}
+    {include file="insertColour.tpl"}
+    </aside>
+    {include file="footer.tpl"}

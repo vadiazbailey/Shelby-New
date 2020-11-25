@@ -21,17 +21,15 @@ class BeerController{
         $this->userController = new UserController();
     }
 
-    
-
     //Metodos
     function showHome(){
         $loggedIn = $this->userController->checkLoggedIn();
         if ($loggedIn == true){
             $user = $_SESSION["MAIL"];
-            $this->beerView->showHome($loggedIn,$user);
         }else{
-            header("Location: " .LOGIN);
+            $user = "";
         }
+        $this->beerView->showHome($loggedIn,$user);
     }
 
     //Me muestra las cervezas
