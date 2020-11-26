@@ -17,4 +17,15 @@ function GetUser($user){
    return  $sentencia->fetch(PDO::FETCH_OBJ);
     
 }
+
+public function getUsers(){
+    $query = $this->db->prepare('SELECT * FROM usuarios');
+    $ok = $query->execute();
+    if (!$ok){
+        var_dump($query->errorInfo());
+        die();
+    }
+    $users = $query->fetchALL(PDO::FETCH_OBJ);
+    return $users;
+}
 }

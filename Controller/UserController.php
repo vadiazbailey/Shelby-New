@@ -85,7 +85,20 @@ class UserController{
             }
         }
         
-
+        public function registerUser(){
+            $mail = $_POST['email'];
+            $password = $_POST['password'];
+            $users = $this->userModel->GetUsers();
+            if ((isset($users))&&($users!=null)){
+                foreach ($users as $user) {
+                    if ($mail==$user->email){
+                        $this->viewUser->repeatedMail();
+                    }
+                }
+            }
+            $this->modelUser->insertUser($mail, $password);
+            header("Location: " . BASE_URL);
+        }
       
         
     

@@ -44,7 +44,7 @@ class ColourModel{
         function editColor($nombre, $id_color){
             $sentencia = $this->db->prepare("UPDATE color SET nombre=? WHERE id_color=?");;
             $sentencia->execute(array($nombre, $id_color));
-      }
+       }
     
 
     

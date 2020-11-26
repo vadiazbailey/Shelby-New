@@ -14,14 +14,14 @@ class UserView{
 
 
     function showLogin($loggedIn,$message=""){
-      
-    
        //Muestro el template
        $this->smarty->assign('loggedIn', $loggedIn);
        $this->smarty->assign('message', $message);
         $this->smarty->display('templates/login.tpl');
     }
 
-    
+    public function repeatedMail(){
+        $this->smarty->display('./templates/login.tpl');
+    }
 
 }
