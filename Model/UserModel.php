@@ -28,4 +28,14 @@ public function getUsers(){
     $users = $query->fetchALL(PDO::FETCH_OBJ);
     return $users;
 }
+
+public function insertUser($mail, $password){
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $query = $this->db->prepare('INSERT INTO usuarios(nombre, email, password) VALUES (?,?,?)');
+    $ok = $query->execute(array($mail, $hash));
+    if (!$ok){
+        var_dump($query->errorInfo());
+        die();
+    }
+}
 }
