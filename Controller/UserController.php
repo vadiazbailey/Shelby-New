@@ -99,6 +99,9 @@ class UserController{
             $this->modelUser->insertUser($mail, $password);
             header("Location: " . BASE_URL);
         }
+        function showRegisterUser(){
+            $this->userView->showRegisterUser();
+        }
       
         
     

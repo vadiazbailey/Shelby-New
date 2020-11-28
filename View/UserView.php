@@ -24,4 +24,8 @@ class UserView{
         $this->smarty->display('./templates/login.tpl');
     }
 
+    function showRegisterUser(){
+        $this ->smarty-> display('templates/checkIn.tpl');
+    }
+
 }

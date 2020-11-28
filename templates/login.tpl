@@ -11,6 +11,7 @@
         <input type="password" placeholder="Enter Password" name="input_pass" required>
 
         <button type="submit">Login</button>
+        <button type="submit"> <a href="registrarse">Registrarse</a></button>
     </div>
 </form>
 

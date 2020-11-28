@@ -25,14 +25,14 @@ class BeerModel{
         return $beer;
     }
 
-    //Filtra por color
+   /* //Filtra por color
     function getColourByFiltro($colorSolicitado){
         $sentencia = $this->db->prepare('SELECT * FROM color WHERE nombre=?');
         $sentencia->execute(array($colorSolicitado));
         $colorFiltrado= $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $colorFiltrado;
     }
-
+*/
  //Agrega una nueva cerveza
  function insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color){
     $sentencia = $this->db->prepare('INSERT INTO cerveza (estilo, volumen, graduacion_alcoholica, precio, cantidad, id_color) VALUES(?,?,?,?,?,?)');
