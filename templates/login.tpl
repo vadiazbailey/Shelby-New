@@ -2,7 +2,7 @@
 
 <form action="verifyUser" method="post">
 
-
+    <h1>Login</h1>
     <div class="container">
         <label for="user">Username</label>
         <input type="text" placeholder="Enter Username" name="input_user" required>

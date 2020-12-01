@@ -86,7 +86,7 @@ class UserController{
         }
         
         public function registerUser(){
-            $mail = $_POST['email'];
+            $mail = $_POST['mail'];
             $password = $_POST['password'];
             $users = $this->userModel->GetUsers();
             if ((isset($users))&&($users!=null)){
@@ -102,24 +102,7 @@ class UserController{
         function showRegisterUser(){
             $this->userView->showRegisterUser();
         }
-
-        public function registerUser(){
-            $name = $_POST['nombre'];
-            $mail = $_POST['email'];
-            $password = $_POST['password'];
-            $users = $this->modelUser->getUsers();
-            if ((isset($users))&&($users!=null)){
-                foreach ($users as $user) {
-                    if ($mail==$user->email){
-                        $this->viewUser->repeatedMail();
-                    }
-                }
-            }
-            $this->modelUser->insertUser($name, $mail, $password);
-            header("Location: " . BASE_URL);
-        }                    
+                    
     }
       
         
-    
-}

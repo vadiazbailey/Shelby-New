@@ -18,14 +18,14 @@ class ComentariosModel{
      }
 
   
-/*
+
      //VERR
-     function getComentariosBypedido($id) {
-            $sentencia = $this->db->prepare('SELECT comentario.id_comentario, comentario.texto, comentario.puntaje, usuario.alias AS alias FROM comentario JOIN usuario ON comentario.id_usuario = usuario.id_usuario WHERE id_pedido = ?');
-            $sentencia->execute(array($id));
-            return $sentencia->fetchAll(PDO::FETCH_OBJ);
-        }
-*/
+     public function getComentarioByBeer($id){
+        $sentencia=$this->db->prepare('SELECT * FROM comentario where id_cerveza=?');
+        $sentencia->execute(array($id));
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+
      function insertComentario($texto,$puntaje,$id_usuario, $id_cerveza) {
             $sentencia = $this->db->prepare('INSERT INTO comentario(texto,puntaje,id_usuario,id_cerveza) VALUES(?,?,?,?)');
             $sentencia->execute(array($texto,$puntaje,$id_usuario,$id_cerveza));
@@ -41,7 +41,7 @@ class ComentariosModel{
 
     // Elimina un comentario de la BDD
     function deleteComentario($id) {
-        $sentencia = $this->db->prepare('DELETE FROM comentario WHERE id_comentario = ?' );
+        $sentencia = $this->db->prepare('DELETE FROM comentario WHERE id_comentario = ?');
         $sentencia->execute(array($id));
         return $sentencia->rowCount();
     }

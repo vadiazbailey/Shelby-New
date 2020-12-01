@@ -29,6 +29,8 @@
 
 
     </table>
+
+
     
     {include file="insertBeer.tpl" }
 </aside>
