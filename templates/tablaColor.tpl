@@ -22,6 +22,7 @@
     </table>
     
     {include file="filtroColor.tpl"}
+    {include file="filtroCervezas.tpl"}
     {include file="insertColour.tpl"}
     </aside>
     {include file="footer.tpl"}

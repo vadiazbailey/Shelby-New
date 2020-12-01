@@ -78,16 +78,29 @@ class BeerController{
         $cantidad=$_POST['cantidad'];
         $color=$_POST['color'];
         if(!empty($estilo)&& !empty($volumen)&& !empty($graduacion_alcoholica)&& !empty($precio)&&!empty($cantidad)&&!empty($color)){
-            $this->beerModel->insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color);
             $loggedIn = $this->userController->checkLoggedIn();
             if ($loggedIn == true){
                 $user = $_SESSION["MAIL"];
             }else{
                 $user = "";
             } 
+            //Obtiene la imagen
+            if ($_FILES['imagen']['name']) {
+                if ($_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/png") {     
+                    $this->beerModel->insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color, $_FILES['imagen']);
+                }
+                else {
+                    $this->view->showError("Formato no aceptado");
+                    die();
+                }
+            }
+            else{
+                $this->beerModel->insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color); 
+            }
+        }
             header("Location: " . CERVEZA);
         }     
-    }
+    
 
    //Elimina una cerveza
    public function deleteBeer($params = null){
@@ -129,6 +142,7 @@ class BeerController{
         $precio=$_POST['precio'];
         $cantidad=$_POST['cantidad'];
         $color=$_POST['color'];
+        $imagen=$_POST['imagen'];
         $id=$_POST['id_cerveza'];
         
         if (empty($estilo)){
@@ -149,7 +163,10 @@ class BeerController{
         if (empty($color)){
             die("color vacio");
         }
-        $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
+        if (empty($imagen)){
+            die("imagen vacia");
+        }
+        $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$imagen, $id);
         $loggedIn = $this->userController->checkLoggedIn();
             if ($loggedIn == true){
                 $user = $_SESSION["MAIL"];
@@ -159,6 +176,19 @@ class BeerController{
         header("Location: " . CERVEZA);
     }
 
-
+   //Funcion para filtrar cervezas por color
+   function showFiltroColor(){ 
+    $colour = $this->colourModel->getColours();
+    $colorSolicitado = $_GET["colorParaFiltrar"];
+    if(!empty($colorSolicitado)){
+        $cervezas = $this->beerModel->getColourByFiltro($colorSolicitado);
+        $this->beerView->showFiltroColor($cervezas, $colour);
+    }
+    else{
+        $cervezas = $this->beerModel->getBeers();
+        $this->beerView->showFiltroColor($cervezas,$colour);
+    }
+    
+}
    
 }

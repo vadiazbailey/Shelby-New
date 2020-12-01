@@ -37,12 +37,16 @@
             {/foreach}
             </select>
             </p>
+            <p>
+                Imagen:
+                <input type="file" name="imagen" id="imageToUpload"/>
+            </p>
+           
             {if $loggedIn==true}
                 
                 <input id="id_cerveza" name="id_cerveza" type="hidden" value="{$cerveza->id_cerveza}">
                  <button type="submit" class="enviarDatos">Modificar</button>
         {/if}
-
     </form>
 {/if}
 {include file="footer.tpl" }

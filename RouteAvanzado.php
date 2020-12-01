@@ -40,13 +40,13 @@
     $r->addRoute("editBeer/:ID", "GET", "BeerController", "editBeer");
     $r->addRoute("deleteBeer/:ID", "GET", "BeerController", "deleteBeer");
     $r->addRoute("mostrarCervezaActualizada", "POST", "BeerController", "mostrarCervezaActualizada");
+    $r->addRoute("filtroColor", "GET", "BeerController", "showFiltroColor"); 
 
     //Alta, baja y Modificar Color
     $r->addRoute("insertColour", "POST", "ColourController", "insertColour");
     $r->addRoute("editColour/:ID", "GET", "ColourController", "editColor");
     $r->addRoute("deleteColour/:ID", "GET", "ColourController", "deleteColor");
     $r->addRoute("mostrarColorActualizado", "POST", "ColourController", "mostrarColorActualizado");
-    $r->addRoute("filtroColor", "GET", "ColourController", "showFiltroColor"); 
 
     //Ruta por defecto.
     $r->setDefaultRoute("BeerController", "showHome");

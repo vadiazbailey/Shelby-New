@@ -47,4 +47,10 @@ class BeerView{
         $this->smarty->assign('user', $user);
         $this ->smarty-> display('templates/editBeer.tpl');
     }
+
+    function showFiltroColor($cerveza, $colors){;
+        $this->smarty->assign('colorFiltro', $cerveza);
+        $this->smarty->assign('colors', $colors);
+        $this->smarty->display('templates/filtroCervezas');
+    }
 }

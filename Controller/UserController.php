@@ -85,22 +85,35 @@ class UserController{
             }
         }
         
-        public function registerUser(){
+        // REGISTRA USUARIO
+        function registerUser(){
             $mail = $_POST['mail'];
-            $password = $_POST['password'];
-            $users = $this->userModel->GetUsers();
-            if ((isset($users))&&($users!=null)){
-                foreach ($users as $user) {
-                    if ($mail==$user->email){
-                        $this->viewUser->repeatedMail();
-                    }
-                }
+            $passwordForm = $_POST['password'];
+
+            if(!empty($mail) && !empty($passwordForm)){
+                $password = password_hash($passwordForm, PASSWORD_DEFAULT);
+                $this->userModel->insertUser($mail, $password);
             }
-            $this->modelUser->insertUser($mail, $password);
-            header("Location: " . BASE_URL);
+
+            header("Location: " . LOGIN);
+                             
+}
+
+ // VERIFICA SI EL USUARIO LOGGEADO ES ADMIN O ES UN USUARIO REGISTRADO
+ function checkAdmin(){
+    if ($this->checkLoggedIn()){ 
+        if ($_SESSION['ADMINISTRADOR'] == 1)
+            return true;
+        else{
+            return false;
         }
+    }
+}
+
         function showRegisterUser(){
-            $this->userView->showRegisterUser();
+            $loggedIn = false;
+            $user = "";
+            $this->userView->showRegisterUser($loggedIn, $user);
         }
                     
     }

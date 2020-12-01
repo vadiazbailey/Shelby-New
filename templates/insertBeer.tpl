@@ -1,5 +1,5 @@
 {if $loggedIn==true}
-<form method="POST" action="insertBeer" class="agregar-producto">
+<form method="POST" action="insertBeer" class="agregar-producto" enctype="multipart/form-data">
 <label>Agregue el Cerveza que desee</label>
 <p>
     Cerveza:
@@ -33,6 +33,10 @@
         {/foreach}
     </select>
 
+</p>
+<p>
+    Imagen:
+    <input type="file" name="imagen" id="imageToUpload">
 </p>
 <button type="submit" class="enviarDatos">Insertar cerveza</button>
 </form>

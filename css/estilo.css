@@ -499,3 +499,8 @@ tr:hover td {
     font-size: 20px;
     
 }
+
+img.beer {
+    width: 127px;
+    height: 130px;
+}

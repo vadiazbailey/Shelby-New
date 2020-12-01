@@ -1,20 +1,17 @@
 <?php
 //Include que necesito
 require_once './Model/ColourModel.php';
-require_once './Model/BeerModel.php';
 require_once './View/ColourView.php';
 
 class ColourController{
      //Variables
     private $colourModel;
-    private $beerModel;
     private $colourView;
     private $userController;
 
     //Constructor
     function __construct(){
         $this->colourModel = new ColourModel();
-        $this->beerModel = new BeerModel();
         $this->colourView = new ColourView();
         $this->userController = new UserController();
     }
@@ -99,10 +96,4 @@ class ColourController{
         header ("Location: " . COLOR);
     }
 
-    //Funcion para filtrar cervezas por color
-   function showFiltroColor(){
-        $colorSolicitado = $_GET["colorParaFiltrar"];
-        $colorFiltro = $this->beerrModel->getColourByFiltro($colorSolicitado);
-        $this->pedidosView->showFiltroColor($colorFiltro);
-    }
 }
