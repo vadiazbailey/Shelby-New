@@ -30,4 +30,11 @@ class UserView{
         $this ->smarty-> display('templates/checkIn.tpl');
     }
 
+    function showPermisos($loggedIn, $user, $usuarios){
+        $this->smarty->assign('loggedIn', $loggedIn);
+        $this->smarty->assign('user', $user);
+        $this->smarty->assign('usuarios', $usuarios);
+        $this ->smarty-> display('templates/permisos.tpl');
+    }
+
 }

@@ -105,6 +105,13 @@ class UserController{
             $user = "";
             $this->userView->showRegisterUser($loggedIn, $user);
         }
+
+        function showPermisos(){
+            $loggedIn = false;
+            $user = "";
+            $usuarios = $this->userModel->getUsers();
+            $this->userView->showPermisos($loggedIn, $user, $usuarios);
+        }
                     
     }
       

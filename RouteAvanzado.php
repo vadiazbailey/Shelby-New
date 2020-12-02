@@ -15,6 +15,7 @@
     define("LOGIN", BASE_URL.'login');
     define("LOGOUT", BASE_URL.'logout');
     define("REGISTRARSE", BASE_URL. 'registrarse');
+    define("PERMISOS", BASE_URL. 'permisos');
 
     $r = new Router();
 
@@ -25,6 +26,7 @@
     $r->addRoute("reserva", "GET", "BeerController", "showReserva");
     $r->addRoute("contacto", "GET", "BeerController", "showContacto");
     $r->addRoute("registrarse", "GET", "UserController", "showRegisterUser");
+    $r->addRoute("permisos", "GET", "userController", "showPermisos");
 
     //Rutas del usuario
     $r->addRoute("login", "GET", "UserController", "Login");
@@ -32,8 +34,6 @@
     $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");
     $r->addRoute("loggedIn","GET","UserController","showLogin");
     $r->addRoute("checkIn","POST","UserController","registerUser");
-
-
 
     //Alta, baja y Modificar Cerveza
     $r->addRoute("insertBeer", "POST", "BeerController", "insertBeer");

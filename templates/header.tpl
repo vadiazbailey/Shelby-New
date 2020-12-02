@@ -40,6 +40,7 @@
             <li class="li-item"><a href="color">Color</a></li>
             <li class="li-item"><a href="reserva">Reservas</a></li>
             <li class="li-item"><a href="contacto">Contacto</a></li>
+            <li class="li-item"><a href="permisos">Permisos</a></li>
         </ul>
 
 

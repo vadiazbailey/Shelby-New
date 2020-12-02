@@ -19,13 +19,9 @@ function GetUser($user){
 }
 
 public function getUsers(){
-    $query = $this->db->prepare('SELECT * FROM usuarios');
-    $ok = $query->execute();
-    if (!$ok){
-        var_dump($query->errorInfo());
-        die();
-    }
-    $users = $query->fetchALL(PDO::FETCH_OBJ);
+    $sentencia = $this->db->prepare('SELECT * FROM usuario');
+    $sentencia->execute();
+    $users = $sentencia->fetchALL(PDO::FETCH_OBJ);
     return $users;
 }
 
