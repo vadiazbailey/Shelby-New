@@ -62,10 +62,10 @@ class BeerModel{
      //Edita una cerveza
      //$this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
      function editBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, 
-     $color,$id_cerveza, $image =null){ 
+     $color,$id_cerveza){ 
         $sentencia = $this->db->prepare("UPDATE cerveza SET estilo=?, volumen=?, 
-        graduacion_alcoholica=?, precio=?, cantidad=?, id_color=? imagen=?  WHERE id_cerveza=?");
+        graduacion_alcoholica=?, precio=?, cantidad=?, id_color=?  WHERE id_cerveza=?");
         $sentencia->execute(array($estilo, $volumen, $graduacion_alcoholica, $precio,
-        $cantidad, $color,$id_cerveza, $image ));
+        $cantidad, $color,$id_cerveza));
      }
 }

@@ -34,6 +34,7 @@
     $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");
     $r->addRoute("loggedIn","GET","UserController","showLogin");
     $r->addRoute("checkIn","POST","UserController","registerUser");
+    $r->addRoute("deleteUsuario/:ID", "GET", "UsersController", "deleteUsuario"); 
 
     //Alta, baja y Modificar Cerveza
     $r->addRoute("insertBeer", "POST", "BeerController", "insertBeer");
