@@ -61,17 +61,6 @@ class UserController{
             }
         }
     }
-        
-      //  function showHomeLog(){
-       //     $loggedIn=$this->checkLoggedIn();
-       //     $user = $_SESSION["MAIL"];
-       //     if ($loggedIn==true) {
-       //         header("Location: " .HOME);
-        //    }
-
-          //  $this->usersView->showLogin($loggedIn,$user,); 
-           
-       // }
 
         
         //Verifica que se haya iniciado sesion
@@ -79,7 +68,6 @@ class UserController{
             session_start();
             if(!isset($_SESSION["MAIL"])){
                return  false;
-                // header("Location: ".LOGIN);
             }else{
                 return true;
             }
@@ -93,9 +81,11 @@ class UserController{
             if(!empty($mail) && !empty($passwordForm)){
                 $password = password_hash($passwordForm, PASSWORD_DEFAULT);
                 $this->userModel->insertUser($mail, $password);
+                $usuario =$this->userModel->GetUser($mail);
+                $this->Login($usuario);
             }
 
-            header("Location: " . LOGIN);
+            header("Location: " . HOME);
                              
 }
 
