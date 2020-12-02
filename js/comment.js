@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-function getComentarios() {
+function getComentarios($id_cerveza) {
     fetch('api/comentarios')
         .then(response => response.json())
         .then(comentario => app.comentarios = comentario)
@@ -32,10 +32,10 @@ function addComentario() {
     console.log("entre");
 
     const comentario = {
-        id_usuario:  
+        id_usuario: document.querySelector("input[name=id_usuario]").value,  
         texto:  document.querySelector("textarea[name=comentario]").value,
         puntaje:  document.querySelector("select[name=puntaje]").value,
-        id_cerveza:  
+        id_cerveza: document.querySelector("input[name=id_cerveza]").value  
     }
 
     fetch('api/comentarios', {

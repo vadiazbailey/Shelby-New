@@ -1,12 +1,10 @@
 {include file="header.tpl" }
-
-<form action="checkIn" method="POST">
-
-   
+<div class="container">
+    <form action="checkIn" method="POST" class="form">
         <div>
             <label>E-Mail</label>
             <div>
-                <input type="email" name="email" required autofocus>
+                <input type="mail" name="mail" required autofocus>
             </div>
         </div>
 
@@ -18,9 +16,8 @@
         </div>
 
         <div>
-            <button type="submit">Enviar</button>
+            <button type="submit">Registrarse</button>
         </div>
-    </div>
-</form>
-
+    </form>
+</div>
 {include file="footer.tpl" }

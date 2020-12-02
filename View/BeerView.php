@@ -39,8 +39,6 @@ class BeerView{
         $this ->smarty-> display('templates/contacto.tpl');
     }
 
-   
-
     function mostrarFormEditBeer($beer,$colors,$log,$user){
         $this->smarty->assign('cerveza', $beer);
         $this->smarty->assign('colors', $colors);
@@ -55,4 +53,13 @@ class BeerView{
         //$smarty->assign('titulo_s', "Lista de tareas utilizando CSR");
         $this->smarty->display('templates/createComment.tpl'); // muestro el template 
     }
+
+    function showFiltroColor($cerveza, $color,$log,$user){;
+        $this->smarty->assign('loggedIn', $log);
+        $this->smarty->assign('user', $user);
+        $this->smarty->assign('colorFiltro', $cerveza);
+        $this->smarty->assign('colors', $color);
+        $this->smarty->display('templates/cervezasFiltrada.tpl');
+    }
+
 }

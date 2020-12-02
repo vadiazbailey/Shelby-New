@@ -1,6 +1,6 @@
 {include file="header.tpl" }
 {if $loggedIn == true}
-<form method="POST" action="mostrarCervezaActualizada" class="agregar-producto">
+<form method="POST" action="mostrarCervezaActualizada" class="agregar-producto" enctype="multipart/form-data">
         <label>Edita la cerveza seleccionada: </label>
            <p>
             Estilo:
@@ -37,12 +37,16 @@
             {/foreach}
             </select>
             </p>
+            <p>
+                Imagen:
+                <input type="file" name="imagen" id="imageToUpload"/>
+            </p>
+           
             {if $loggedIn==true}
                 
                 <input id="id_cerveza" name="id_cerveza" type="hidden" value="{$cerveza->id_cerveza}">
                  <button type="submit" class="enviarDatos">Modificar</button>
         {/if}
-
     </form>
 {/if}
 {include file="footer.tpl" }

@@ -44,14 +44,14 @@
     $r->addRoute("deleteBeer/:ID", "GET", "BeerController", "deleteBeer");
     $r->addRoute("mostrarCervezaActualizada", "POST", "BeerController", "mostrarCervezaActualizada");
    
-    //$r->addRoute("comentario", "GET", "BeerController", "commentCSR");
-    $r->addRoute("insert", "POST", "TasksController", "InsertTask");
+    $r->addRoute("comentario", "GET", "BeerController", "commentCSR");
+    $r->addRoute("filtroColor", "GET", "BeerController", "showFiltroColor"); 
+
     //Alta, baja y Modificar Color
     $r->addRoute("insertColour", "POST", "ColourController", "insertColour");
     $r->addRoute("editColour/:ID", "GET", "ColourController", "editColor");
     $r->addRoute("deleteColour/:ID", "GET", "ColourController", "deleteColor");
     $r->addRoute("mostrarColorActualizado", "POST", "ColourController", "mostrarColorActualizado");
-    $r->addRoute("filtroColor", "GET", "ColourController", "showFiltroColor"); 
 
     //Alta, baja y Modificar Comentario
    // $r->addRoute("insertarComentario", "POST", "ColourController", "insertColour");

@@ -62,17 +62,6 @@ class UserController{
         }
     }
         
-      //  function showHomeLog(){
-       //     $loggedIn=$this->checkLoggedIn();
-       //     $user = $_SESSION["MAIL"];
-       //     if ($loggedIn==true) {
-       //         header("Location: " .HOME);
-        //    }
-
-          //  $this->usersView->showLogin($loggedIn,$user,); 
-           
-       // }
-
         
         //Verifica que se haya iniciado sesion
         function checkLoggedIn(){
@@ -85,24 +74,69 @@ class UserController{
             }
         }
         
-        public function registerUser(){
+        // REGISTRA USUARIO
+        function registerUser(){
             $mail = $_POST['mail'];
-            $password = $_POST['password'];
-            $users = $this->userModel->GetUsers();
-            if ((isset($users))&&($users!=null)){
-                foreach ($users as $user) {
-                    if ($mail==$user->email){
-                        $this->viewUser->repeatedMail();
-                    }
-                }
+            $passwordForm = $_POST['password'];
+
+            if(!empty($mail) && !empty($passwordForm)){
+                $password = password_hash($passwordForm, PASSWORD_DEFAULT);
+                $this->userModel->insertUser($mail, $password);
             }
-            $this->modelUser->insertUser($mail, $password);
-            header("Location: " . BASE_URL);
+
+            header("Location: " . LOGIN);
+                             
+}
+
+ // VERIFICA SI EL USUARIO LOGGEADO ES ADMIN O ES UN USUARIO REGISTRADO
+ function checkAdmin(){
+    if ($this->checkLoggedIn()){ 
+        if ($_SESSION['ADMIN'] == 1)
+            return true;
+        else{
+            return false;
         }
+    }
+}
+
         function showRegisterUser(){
-            $this->userView->showRegisterUser();
+            $loggedIn = false;
+            $user = "";
+            $this->userView->showRegisterUser($loggedIn, $user);
         }
                     
     }
+
+        function updateAdmin($params = null){
+            if ($this->checkLoggedIn()){
+                $usuario = $_SESSION["MAIL"];
+            }else{
+                $usuario = '';
+            }        
+            if(isset($params[':ID'])){
+                $id = $params[':ID'];
+                if ($this->checkAdmin()){
+                    $existe = $this->usersModel->getUserById($id);
+                    if ($existe){
+                        if ($existe->checkAdmin() == 1){
+                            $permiso = 0;
+                        }else{
+                            $permiso = 1; 
+                        }                
+                        $this->usersModel->updatePermiso($permiso, $id);
+                        $usuarios = $this->usersModel->getUsers($usuario);                
+                        header("Location: " . MENUADMIN);
+                    }else{
+                        $seccion = "al Menú Administrador";
+                        $this->homeView->showError("No existe el usuario con ese ID.", "showMenuAdmin", $seccion, $this->loggeado, $usuario, $this->admin);
+                    }
+                }else{
+                    header("Location: " . HOME);
+                }   
+            }else{
+                $seccion = "a Home";  
+                $this->homeView->showError("La página a la que intentas ingresar no existe..", "Home", $seccion, $this->loggeado, $usuario, $this->admin);
+            }                 
+        }
       
         

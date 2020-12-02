@@ -24,7 +24,9 @@ class UserView{
         $this->smarty->display('./templates/login.tpl');
     }
 
-    function showRegisterUser(){
+    function showRegisterUser($loggedIn, $user){
+        $this->smarty->assign('loggedIn', $loggedIn);
+        $this->smarty->assign('user', $user);
         $this ->smarty-> display('templates/checkIn.tpl');
     }
 
