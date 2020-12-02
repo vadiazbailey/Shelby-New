@@ -24,6 +24,7 @@ class BeerView{
         $this->smarty->assign('loggedIn',$log);
         $this->smarty->assign('user',$user);
         $this ->smarty-> display('templates/table.tpl');
+       
     }
 
     function showReserva($log, $user){
@@ -45,6 +46,13 @@ class BeerView{
         $this->smarty->assign('colors', $colors);
         $this->smarty->assign('loggedIn', $log);
         $this->smarty->assign('user', $user);
-        $this ->smarty-> display('templates/editBeer.tpl');
+        $this->smarty->display('templates/editBeer.tpl');
+    }
+
+    function ShowCommentsCSR($log, $user) {
+        $this->smarty->assign('loggedIn',$log);
+        $this->smarty->assign('user',$user);
+        //$smarty->assign('titulo_s', "Lista de tareas utilizando CSR");
+        $this->smarty->display('templates/createComment.tpl'); // muestro el template 
     }
 }

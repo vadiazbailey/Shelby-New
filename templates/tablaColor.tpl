@@ -23,5 +23,6 @@
     
     {include file="filtroColor.tpl"}
     {include file="insertColour.tpl"}
+    
     </aside>
     {include file="footer.tpl"}

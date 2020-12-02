@@ -56,6 +56,17 @@ class BeerController{
         $this->beerView->showReserva($loggedIn, $user);
 
     }
+    function showOpinion(){
+        $loggedIn = $this->userController->checkLoggedIn();
+        if($loggedIn){
+            $user = $_SESSION["MAIL"];
+        }else{
+            $user = "";
+        }
+        $this->beerView->ShowCommentsCSR($loggedIn, $user);
+
+    }
+  
 
     //Me muestra el html de contacto
     function showContacto(){
@@ -65,9 +76,8 @@ class BeerController{
         }else{
             $user = "";
         }
-        $this->beerView->showContacto($loggedIn, $user);
+        $this->beerView->ShowCommentsCSR($loggedIn, $user);    
     }
-
     //Me inserta una cerveza
     function insertBeer(){
         //$logeado = $this->userName->checkLoggedIn();     
@@ -90,22 +100,22 @@ class BeerController{
     }
 
    //Elimina una cerveza
-   public function deleteBeer($params = null){
-    $id_cerveza = $params[':ID'];
-    $this->beerModel->deleteBeer($id_cerveza);
-    $loggedIn = $this->userController->checkLoggedIn();
+   function deleteBeer($params = null){
+        $id_cerveza = $params[':ID'];
+        $this->beerModel->deleteBeer($id_cerveza);
+        $loggedIn = $this->userController->checkLoggedIn();
             if ($loggedIn == true){
                 $user = $_SESSION["MAIL"];
             }else{
                 $user = "";
             } 
             header("Location: " . CERVEZA);
-        }     
+            
     
-
+    }
    
      //Edita una cerveza
-     public function editBeer($params = null){
+    function editBeer($params = null){
        
         $id_cerveza = $params[':ID'];
         $beer = $this->beerModel->getBeer($id_cerveza);
@@ -159,6 +169,5 @@ class BeerController{
         header("Location: " . CERVEZA);
     }
 
-
-   
+    
 }

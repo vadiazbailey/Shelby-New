@@ -1,4 +1,4 @@
-{include file="header.tpl" }
+{*}{include file="header.tpl" }{*}
 <aside id="descripcion" class="descripcion-cervezas">
     <table>
         <thead>
@@ -25,14 +25,16 @@
                 </tr>
                 {/if}
         {/foreach}
-        <tbody id="tabla" class="tbody"></tbody>
+        <tbody id="id="tabla-comment class="tbody"></tbody>
 
 
     </table>
 
 
     
-    {include file="insertBeer.tpl" }
+  {include file="insertBeer.tpl" }
+ 
+
 </aside>
 </article>
 
