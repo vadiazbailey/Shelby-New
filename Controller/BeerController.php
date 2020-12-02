@@ -11,7 +11,6 @@ class BeerController{
     private $colourModel;
     private $beerView;
     private $userController;
-    
 
     //Constructor
     function __construct(){
@@ -84,7 +83,7 @@ class BeerController{
             }else{
                 $user = "";
             } 
-            //Obtiene la imagen
+
             if ($_FILES['imagen']['name']) {
                 if ($_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/png") {     
                     $this->beerModel->insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color, $_FILES['imagen']);
@@ -99,8 +98,7 @@ class BeerController{
             }
         }
             header("Location: " . CERVEZA);
-        }     
-    
+        } 
 
    //Elimina una cerveza
    public function deleteBeer($params = null){
@@ -142,8 +140,9 @@ class BeerController{
         $precio=$_POST['precio'];
         $cantidad=$_POST['cantidad'];
         $color=$_POST['color'];
-        $imagen=$_POST['imagen'];
         $id=$_POST['id_cerveza'];
+        $image= $_FILES['imagen'];
+        $ruta= $this->beerModel->moveFile($image);
         
         if (empty($estilo)){
             die("estilo vacio");
@@ -163,10 +162,11 @@ class BeerController{
         if (empty($color)){
             die("color vacio");
         }
-        if (empty($imagen)){
+        if (empty($ruta)){
             die("imagen vacia");
         }
-        $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$imagen, $id);
+       
+        $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id, $ruta);
         $loggedIn = $this->userController->checkLoggedIn();
             if ($loggedIn == true){
                 $user = $_SESSION["MAIL"];
@@ -178,17 +178,21 @@ class BeerController{
 
    //Funcion para filtrar cervezas por color
    function showFiltroColor(){ 
-    $colour = $this->colourModel->getColours();
+    $loggedIn = $this->userController->checkLoggedIn();
+    if ($loggedIn == true){
+        $user = $_SESSION["MAIL"];
+    }else{
+        $user = "";
+    } 
+    $color = $this->colourModel->getColours();
     $colorSolicitado = $_GET["colorParaFiltrar"];
     if(!empty($colorSolicitado)){
         $cervezas = $this->beerModel->getColourByFiltro($colorSolicitado);
-        $this->beerView->showFiltroColor($cervezas, $colour);
+        $this->beerView->showFiltroColor($cervezas, $color, $loggedIn,$user);
     }
     else{
-        $cervezas = $this->beerModel->getBeers();
-        $this->beerView->showFiltroColor($cervezas,$colour);
-    }
-    
+        //Poner mensaje
+    }   
 }
    
 }

@@ -19,7 +19,7 @@ class BeerModel{
     }
 
     function getBeer($id_cerveza){
-        $sentencia = $this->db->prepare("SELECT *, color.nombre FROM cerveza JOIN color ON cerveza.id_color = color.id_color WHERE color.nombre= ?");
+        $sentencia = $this->db->prepare("SELECT *, color.nombre FROM cerveza JOIN color ON cerveza.id_color = color.id_color WHERE cerveza.id_cerveza= ?");
         $sentencia->execute(array($id_cerveza));
         $beer = $sentencia->fetch(PDO::FETCH_OBJ);
         return $beer;
@@ -27,11 +27,9 @@ class BeerModel{
 
    //Filtra por color
     function getColourByFiltro($colorSolicitado){
-        $sentencia = $this->db->prepare("SELECT *, color.nombre FROM cerveza JOIN color ON cerveza.id_color= color.id_color WHERE id_cerveza= ?");
+        $sentencia = $this->db->prepare("SELECT *, color.nombre FROM cerveza JOIN color ON cerveza.id_color= color.id_color WHERE color.id_color= ?");
         $sentencia->execute(array($colorSolicitado));
         $colorFiltrado= $sentencia->fetchAll(PDO::FETCH_OBJ);
-        var_dump($colorFiltrado);
-        die();
         return $colorFiltrado;
   
     }
@@ -47,7 +45,7 @@ class BeerModel{
 }
 
   //Mueve el archivo
-  private function moveFile($imagen){
+     function moveFile($imagen){
     $filepath= "img/". uniqid(). ".".strtolower(pathinfo($imagen["name"], PATHINFO_EXTENSION));
     $filepath= "imagenes/beer". uniqid(). ".".strtolower(pathinfo($imagen["name"], PATHINFO_EXTENSION));
     move_uploaded_file($imagen['tmp_name'], $filepath);
@@ -64,16 +62,11 @@ class BeerModel{
      //Edita una cerveza
      //$this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
      function editBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, 
-     $color, $image, $id_cerveza){
-       
-       try {
+     $color,$id_cerveza, $image =null){ 
+        
         $sentencia = $this->db->prepare("UPDATE cerveza SET estilo=?, volumen=?, 
         graduacion_alcoholica=?, precio=?, cantidad=?, id_color=? imagen=?  WHERE id_cerveza=?");
         $sentencia->execute(array($estilo, $volumen, $graduacion_alcoholica, $precio,
-        $cantidad, $color, $image,$id_cerveza ));
-       } catch (\Exception $th) {
-           var_dump($th);
-           die();
-       }
+        $cantidad, $color,$id_cerveza, $image ));
      }
 }

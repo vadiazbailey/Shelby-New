@@ -38,8 +38,6 @@ class BeerView{
         $this ->smarty-> display('templates/contacto.tpl');
     }
 
-   
-
     function mostrarFormEditBeer($beer,$colors,$log,$user){
         $this->smarty->assign('cerveza', $beer);
         $this->smarty->assign('colors', $colors);
@@ -48,9 +46,12 @@ class BeerView{
         $this ->smarty-> display('templates/editBeer.tpl');
     }
 
-    function showFiltroColor($cerveza, $colors){;
+    function showFiltroColor($cerveza, $color,$log,$user){;
+        $this->smarty->assign('loggedIn', $log);
+        $this->smarty->assign('user', $user);
         $this->smarty->assign('colorFiltro', $cerveza);
-        $this->smarty->assign('colors', $colors);
-        $this->smarty->display('templates/filtroCervezas');
+        $this->smarty->assign('colors', $color);
+        $this->smarty->display('templates/cervezasFiltrada.tpl');
     }
+
 }

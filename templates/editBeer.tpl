@@ -1,6 +1,6 @@
 {include file="header.tpl" }
 {if $loggedIn == true}
-<form method="POST" action="mostrarCervezaActualizada" class="agregar-producto">
+<form method="POST" action="mostrarCervezaActualizada" class="agregar-producto" enctype="multipart/form-data">
         <label>Edita la cerveza seleccionada: </label>
            <p>
             Estilo:

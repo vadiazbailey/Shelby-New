@@ -1,3 +1,4 @@
+{include file="header.tpl" }
 <table>
     <thead>
         <tr>
@@ -13,3 +14,4 @@
         {/foreach}
         <tbody id="tabla" class="tbody"></tbody>
 </table>
+{include file="footer.tpl"}
