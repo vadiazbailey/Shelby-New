@@ -11,6 +11,7 @@
     define("CERVEZA", BASE_URL. 'cerveza');
     define("COLOR", BASE_URL.'color');
     define("RESERVA", BASE_URL.'reserva');
+    define("OPINION", BASE_URL.'opinion');
     define("CONTACTO", BASE_URL.'contacto');
     define("LOGIN", BASE_URL.'login');
     define("LOGOUT", BASE_URL.'logout');
@@ -24,6 +25,7 @@
     $r->addRoute("cerveza", "GET", "BeerController", "showBeers");
     $r->addRoute("color", "GET", "ColourController", "showColours");
     $r->addRoute("reserva", "GET", "BeerController", "showReserva");
+    $r->addRoute("opinion", "GET", "BeerController", "showOpinion");
     $r->addRoute("contacto", "GET", "BeerController", "showContacto");
     $r->addRoute("registrarse", "GET", "UserController", "showRegisterUser");
     $r->addRoute("permisos", "GET", "userController", "showPermisos");
@@ -41,14 +43,19 @@
     $r->addRoute("editBeer/:ID", "GET", "BeerController", "editBeer");
     $r->addRoute("deleteBeer/:ID", "GET", "BeerController", "deleteBeer");
     $r->addRoute("mostrarCervezaActualizada", "POST", "BeerController", "mostrarCervezaActualizada");
+   
+    $r->addRoute("comentario", "GET", "BeerController", "commentCSR");
     $r->addRoute("filtroColor", "GET", "BeerController", "showFiltroColor"); 
 
     //Alta, baja y Modificar Color
     $r->addRoute("insertColour", "POST", "ColourController", "insertColour");
     $r->addRoute("editColour/:ID", "GET", "ColourController", "editColor");
     $r->addRoute("deleteColour/:ID", "GET", "ColourController", "deleteColor");
-    $r->addRoute("mostrarColorActualizado", "POST", "ColourController", "mostrarColorActualizado");
+    $r->addRoute("mostrarColorActualizado", "POST", "Colougit rController", "mostrarColorActualizado");
 
+    //Alta, baja y Modificar Comentario
+   // $r->addRoute("insertarComentario", "POST", "ColourController", "insertColour");
+    
     //Ruta por defecto.
     $r->setDefaultRoute("BeerController", "showHome");
 

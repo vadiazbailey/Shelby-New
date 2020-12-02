@@ -1,4 +1,4 @@
-{include file="header.tpl" }
+{*}{include file="header.tpl" }{*}
 <aside id="descripcion" class="descripcion-cervezas">
     <table>
         <thead>
@@ -33,7 +33,9 @@
 
 
     
-    {include file="insertBeer.tpl" }
+  {include file="insertBeer.tpl" }
+ 
+
 </aside>
 </article>
 

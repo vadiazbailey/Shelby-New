@@ -484,6 +484,9 @@ tr:hover td {
    
 
 }
+.container,.form-comment{
+   
+}
 .userName,.password{
     flex-direction: column;
     justify-content: space-around;
@@ -498,6 +501,16 @@ tr:hover td {
     
     font-size: 20px;
     
+}
+
+.comment-tabla{
+  
+    flex-direction: row;
+    justify-content: center;
+
+}  
+.container-com{
+   
 }
 
 img.beer {

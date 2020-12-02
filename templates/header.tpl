@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/estilo.css">
     <script src="./js/control.js"></script>
+     <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
@@ -39,6 +41,7 @@
             <li class="li-item"><a href="cerveza">Cervezas</a></li>
             <li class="li-item"><a href="color">Color</a></li>
             <li class="li-item"><a href="reserva">Reservas</a></li>
+            <li class="li-item"><a href="opinion">Opinion</a></li>
             <li class="li-item"><a href="contacto">Contacto</a></li>
             <li class="li-item"><a href="permisos">Permisos</a></li>
         </ul>
