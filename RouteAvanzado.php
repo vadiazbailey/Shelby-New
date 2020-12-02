@@ -16,6 +16,7 @@
     define("LOGIN", BASE_URL.'login');
     define("LOGOUT", BASE_URL.'logout');
     define("REGISTRARSE", BASE_URL. 'registrarse');
+    define("PERMISOS", BASE_URL. 'permisos');
 
     $r = new Router();
 
@@ -27,7 +28,7 @@
     $r->addRoute("opinion", "GET", "BeerController", "showOpinion");
     $r->addRoute("contacto", "GET", "BeerController", "showContacto");
     $r->addRoute("registrarse", "GET", "UserController", "showRegisterUser");
-   
+    $r->addRoute("permisos", "GET", "userController", "showPermisos");
 
     //Rutas del usuario
     $r->addRoute("login", "GET", "UserController", "Login");
@@ -35,8 +36,6 @@
     $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");
     $r->addRoute("loggedIn","GET","UserController","showLogin");
     $r->addRoute("checkIn","POST","UserController","registerUser");
-
-
 
     //Alta, baja y Modificar Cerveza
     $r->addRoute("insertBeer", "POST", "BeerController", "insertBeer");
@@ -51,7 +50,7 @@
     $r->addRoute("insertColour", "POST", "ColourController", "insertColour");
     $r->addRoute("editColour/:ID", "GET", "ColourController", "editColor");
     $r->addRoute("deleteColour/:ID", "GET", "ColourController", "deleteColor");
-    $r->addRoute("mostrarColorActualizado", "POST", "ColourController", "mostrarColorActualizado");
+    $r->addRoute("mostrarColorActualizado", "POST", "Colougit rController", "mostrarColorActualizado");
 
     //Alta, baja y Modificar Comentario
    // $r->addRoute("insertarComentario", "POST", "ColourController", "insertColour");

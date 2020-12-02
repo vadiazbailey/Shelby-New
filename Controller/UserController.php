@@ -62,13 +62,11 @@ class UserController{
         }
     }
         
-        
         //Verifica que se haya iniciado sesion
         function checkLoggedIn(){
             session_start();
             if(!isset($_SESSION["MAIL"])){
                return  false;
-                // header("Location: ".LOGIN);
             }else{
                 return true;
             }
@@ -82,9 +80,11 @@ class UserController{
             if(!empty($mail) && !empty($passwordForm)){
                 $password = password_hash($passwordForm, PASSWORD_DEFAULT);
                 $this->userModel->insertUser($mail, $password);
+                $usuario =$this->userModel->GetUser($mail);
+                $this->Login($usuario);
             }
 
-            header("Location: " . LOGIN);
+            header("Location: " . HOME);
                              
 }
 
@@ -103,6 +103,13 @@ class UserController{
             $loggedIn = false;
             $user = "";
             $this->userView->showRegisterUser($loggedIn, $user);
+        }
+
+        function showPermisos(){
+            $loggedIn = false;
+            $user = "";
+            $usuarios = $this->userModel->getUsers();
+            $this->userView->showPermisos($loggedIn, $user, $usuarios);
         }
                     
     }
