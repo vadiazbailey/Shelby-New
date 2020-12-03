@@ -88,17 +88,17 @@ class UserController{
 
             header("Location: " . HOME);
                              
-}
+        }
 
  // VERIFICA SI EL USUARIO LOGGEADO ES ADMIN O ES UN USUARIO REGISTRADO
- function checkAdmin(){ 
+    function checkAdmin(){ 
         if ($_SESSION['ADMIN'] == 1)
             return true;
         else{
             return false;
         }
-    }
-}
+        }
+     
 
         function showRegisterUser(){
             $loggedIn = false;
@@ -146,4 +146,5 @@ class UserController{
                         
         }
     }
+}
 

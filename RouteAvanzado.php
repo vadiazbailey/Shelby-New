@@ -28,7 +28,7 @@
     $r->addRoute("opinion", "GET", "BeerController", "showOpinion");
     $r->addRoute("contacto", "GET", "BeerController", "showContacto");
     $r->addRoute("registrarse", "GET", "UserController", "showRegisterUser");
-    $r->addRoute("permisos", "GET", "userController", "showPermisos");
+    $r->addRoute("permisos", "GET", "UserController", "showPermisos");
 
     //Rutas del usuario
     $r->addRoute("login", "GET", "UserController", "Login");
@@ -36,6 +36,7 @@
     $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");
     $r->addRoute("loggedIn","GET","UserController","showLogin");
     $r->addRoute("checkIn","POST","UserController","registerUser");
+
     $r->addRoute("updatePermiso/:ID","GET","UserController","updatePermiso");
     $r->addRoute("deleteUsuario/:ID", "GET", "UsersController", "deleteUsuario"); 
 
