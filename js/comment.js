@@ -1,5 +1,4 @@
 "use strict";
-alert("hola");
 let app = new Vue({
     el: '#vue-comment',
     data: {
