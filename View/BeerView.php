@@ -14,6 +14,7 @@ class BeerView{
     function showHome($log,$user){
         $this->smarty->assign('loggedIn',$log);
         $this->smarty->assign('user',$user);
+     
         $this->smarty->assign('title', 'Shelby Beer');
         $this ->smarty-> display('templates/home.tpl');
     }

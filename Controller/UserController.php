@@ -16,9 +16,11 @@ class UserController{
 
     function Login(){
         $loggedIn=$this->checkLoggedIn();
+        
         if($loggedIn==true){
             header("Location: " . HOME);
         }
+        
 
        $this->userView->showLogin($loggedIn);
     }
@@ -89,8 +91,7 @@ class UserController{
 }
 
  // VERIFICA SI EL USUARIO LOGGEADO ES ADMIN O ES UN USUARIO REGISTRADO
- function checkAdmin(){
-    if ($this->checkLoggedIn()){ 
+ function checkAdmin(){ 
         if ($_SESSION['ADMIN'] == 1)
             return true;
         else{
@@ -106,44 +107,43 @@ class UserController{
         }
 
         function showPermisos(){
-            $loggedIn = false;
-            $user = "";
+            $loggedIn = $this->checkLoggedIn();
+            if($loggedIn){
+                $user = $_SESSION["MAIL"];
+            }else{
+                $user = "";
+            }
             $usuarios = $this->userModel->getUsers();
             $this->userView->showPermisos($loggedIn, $user, $usuarios);
         }
                     
-    }
+    
 
-        function updateAdmin($params = null){
-            if ($this->checkLoggedIn()){
-                $usuario = $_SESSION["MAIL"];
+
+        function updatePermiso($params = null){
+            $loggedIn = $this->checkLoggedIn();
+            $admin = $this->checkAdmin();
+            if ($loggedIn){
+                $user = $_SESSION["MAIL"];
             }else{
                 $usuario = '';
             }        
-            if(isset($params[':ID'])){
                 $id = $params[':ID'];
-                if ($this->checkAdmin()){
-                    $existe = $this->usersModel->getUserById($id);
-                    if ($existe){
-                        if ($existe->checkAdmin() == 1){
+                if ($admin){
+                    $usuario = $this->usersModel->getUserById($id);
+                    if ($usuario){
+                        if ($usuario->$admin == 1){
                             $permiso = 0;
                         }else{
                             $permiso = 1; 
                         }                
                         $this->usersModel->updatePermiso($permiso, $id);
-                        $usuarios = $this->usersModel->getUsers($usuario);                
-                        header("Location: " . MENUADMIN);
-                    }else{
-                        $seccion = "al Menú Administrador";
-                        $this->homeView->showError("No existe el usuario con ese ID.", "showMenuAdmin", $seccion, $this->loggeado, $usuario, $this->admin);
-                    }
+                        $usuarios = $this->usersModel->getUsers($user);                
+                        header("Location: " . PERMISO);
                 }else{
                     header("Location: " . HOME);
                 }   
-            }else{
-                $seccion = "a Home";  
-                $this->homeView->showError("La página a la que intentas ingresar no existe..", "Home", $seccion, $this->loggeado, $usuario, $this->admin);
-            }                 
+                        
         }
-      
-        
+    }
+

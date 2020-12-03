@@ -30,7 +30,7 @@ class ComentariosModel{
             $sentencia = $this->db->prepare('INSERT INTO comentario(texto,puntaje,id_usuario,id_cerveza) VALUES(?,?,?,?)');
             $sentencia->execute(array($texto,$puntaje,$id_usuario,$id_cerveza));
             return $this->db->lastInsertId();
-        }
+     }
 
          // Actualiza un comentario 
       function updateComentario($id, $texto, $puntaje){

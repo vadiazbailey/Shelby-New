@@ -22,7 +22,8 @@
                     </div>
                   
                     <input id="id_cerveza" name="id_cerveza" type="hidden" value="{$cerveza->id_cerveza}">
-                    <input id="id_comentario" name="id_comentario" type="hidden" value="{$comentarios->id_comentario}">
+                   
+                    <input id="id_comentario" name="id_comentario" type="hidden" value="{$comentario->id_comentario}">
                     <button type="submit">Agregar</button>
                     </form>
  </div>

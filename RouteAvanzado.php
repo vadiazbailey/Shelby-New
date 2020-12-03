@@ -36,6 +36,7 @@
     $r->addRoute("verifyUser", "POST", "UserController", "verifyUser");
     $r->addRoute("loggedIn","GET","UserController","showLogin");
     $r->addRoute("checkIn","POST","UserController","registerUser");
+    $r->addRoute("updatePermiso/:ID","GET","UserController","updatePermiso");
 
     //Alta, baja y Modificar Cerveza
     $r->addRoute("insertBeer", "POST", "BeerController", "insertBeer");
@@ -44,13 +45,16 @@
     $r->addRoute("mostrarCervezaActualizada", "POST", "BeerController", "mostrarCervezaActualizada");
    
     $r->addRoute("comentario", "GET", "BeerController", "commentCSR");
-    $r->addRoute("filtroColor", "GET", "BeerController", "showFiltroColor"); 
+
+    $r->addRoute("filtroColor", "GET", "BeerController", "showFiltroColor");
+    
+    //$r->addRoute("deleteUsuario/:ID", "GET", "UserController", "deleteUsuario");
 
     //Alta, baja y Modificar Color
     $r->addRoute("insertColour", "POST", "ColourController", "insertColour");
     $r->addRoute("editColour/:ID", "GET", "ColourController", "editColor");
     $r->addRoute("deleteColour/:ID", "GET", "ColourController", "deleteColor");
-    $r->addRoute("mostrarColorActualizado", "POST", "Colougit rController", "mostrarColorActualizado");
+    $r->addRoute("mostrarColorActualizado", "POST", "ColourController", "mostrarColorActualizado");
 
     //Alta, baja y Modificar Comentario
    // $r->addRoute("insertarComentario", "POST", "ColourController", "insertColour");

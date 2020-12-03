@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 <tr v-for="comentario in comentarios">     
-                    <td>{{ comentario.mail }}</td>
+                    <td>{{ comentario.id_usuario }}</td>
                     <td>{{ comentario.texto }}</td>
                     <td>{{ comentario.puntaje}}</td>
                     <td>{{ comentario.id_comentario}}</td>
@@ -24,7 +24,7 @@
                         <button v-on:click="eliminar"> Eliminar</button>
                     </td> 
                 </tr>
-            </tbody>
+            </tbody id="tabla">
         </table>
         
         
