@@ -28,7 +28,8 @@ class BeerController{
         }else{
             $user = "";
         }
-        $this->beerView->showHome($loggedIn,$user);
+        $admin = $this->checkAdmin();
+        $this->beerView->showHome($loggedIn,$user,$admin);
     }
 
     //Me muestra las cervezas

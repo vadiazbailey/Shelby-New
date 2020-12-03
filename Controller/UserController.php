@@ -91,16 +91,21 @@ class UserController{
         }
 
  // VERIFICA SI EL USUARIO LOGGEADO ES ADMIN O ES UN USUARIO REGISTRADO
-    function checkAdmin($user){ 
-       $usuario= $this->userModel->getUser($user);
-        if ($usuario->admin==1)
-            return true;
-        else{
-            return false;
-        }
-        }
-     
+  
+ 
 
+
+
+      //  function checkAdmin(){
+       //     $admin= $_POST['admin'];
+           
+         ////         return true;
+             //   else{
+               //     return false;
+               // }
+            //}        
+
+       
         function showRegisterUser(){
             $loggedIn = false;
             $user = "";
@@ -114,40 +119,43 @@ class UserController{
             }else{
                 $user = "";
             }
-            $admin= $this->checkAdmin($user); 
+
+            $admin= $this->checkAdmin(); 
             $usuarios = $this->userModel->getUsers();
             $this->userView->showPermisos($loggedIn, $user, $usuarios,$admin);
         }
                     
     
-
-
         function updatePermiso($params = null){
             $loggedIn = $this->checkLoggedIn();
-            if ($loggedIn){
+            if($loggedIn){
                 $user = $_SESSION["MAIL"];
             }else{
-                $usuario = '';
+                $user = "";
             }
-            $admin= $this->checkAdmin($user); 
-                   
+            $admin=$this->isAdmin();
+                
+            if(isset($params[':ID'])){
                 $id = $params[':ID'];
                 if ($admin){
-                    $usuario = $this->usersModel->getUserById($id);
-                    if ($usuario){
-                        if ($usuario->$admin == 1){
+                    $isAdmin = $this->usersModel->getUserById($id);
+                        if ($isAdmin->admin=1){
                             $permiso = 0;
                         }else{
                             $permiso = 1; 
                         }                
                         $this->usersModel->updatePermiso($permiso, $id);
-                        $usuarios = $this->usersModel->getUsers($user);                
+                        $usuarios = $this->usersModel->getUsuarios($usuario);                
                         header("Location: " . PERMISO);
+                    
                 }else{
                     header("Location: " . HOME);
-                }   
+                } 
+            }  
                         
         }
+
+       
     }
-}
+
 
