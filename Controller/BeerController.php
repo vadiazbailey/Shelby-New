@@ -151,9 +151,9 @@ class BeerController{
         $cantidad=$_POST['cantidad'];
         $color=$_POST['color'];
         $id=$_POST['id_cerveza'];
-        $image= $_FILES['imagen'];
+        /*$image= $_FILES['imagen'];
 
-        $ruta= $this->beerModel->moveFile($image);
+        $ruta= $this->beerModel->moveFile($image);*/
         
         if (empty($estilo)){
             die("estilo vacio");
@@ -174,7 +174,7 @@ class BeerController{
             die("color vacio");
         }
         
-        $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id, $ruta);
+        $this->beerModel->editBeer($estilo, $volumen,$graduacion_alcoholica,$precio,$cantidad,$color,$id);
         $loggedIn = $this->userController->checkLoggedIn();
             if ($loggedIn == true){
                 $user = $_SESSION["MAIL"];

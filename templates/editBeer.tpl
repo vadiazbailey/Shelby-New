@@ -37,10 +37,6 @@
             {/foreach}
             </select>
             </p>
-            <p>
-                Imagen:
-                <input type="file" name="imagen" id="imageToUpload"/>
-            </p>
            
             {if $loggedIn==true}
                 
