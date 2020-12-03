@@ -91,8 +91,9 @@ class UserController{
         }
 
  // VERIFICA SI EL USUARIO LOGGEADO ES ADMIN O ES UN USUARIO REGISTRADO
-    function checkAdmin(){ 
-        if ($_SESSION['ADMIN'] == 1)
+    function checkAdmin($user){ 
+       $usuario= $this->userModel->getUser($user);
+        if ($usuario->admin==1)
             return true;
         else{
             return false;
@@ -113,8 +114,9 @@ class UserController{
             }else{
                 $user = "";
             }
+            $admin= $this->checkAdmin($user); 
             $usuarios = $this->userModel->getUsers();
-            $this->userView->showPermisos($loggedIn, $user, $usuarios);
+            $this->userView->showPermisos($loggedIn, $user, $usuarios,$admin);
         }
                     
     
@@ -122,12 +124,13 @@ class UserController{
 
         function updatePermiso($params = null){
             $loggedIn = $this->checkLoggedIn();
-            $admin = $this->checkAdmin();
             if ($loggedIn){
                 $user = $_SESSION["MAIL"];
             }else{
                 $usuario = '';
-            }        
+            }
+            $admin= $this->checkAdmin($user); 
+                   
                 $id = $params[':ID'];
                 if ($admin){
                     $usuario = $this->usersModel->getUserById($id);

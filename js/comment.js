@@ -5,33 +5,37 @@ let app = new Vue({
         comentarios: [],
         admin: ''  
     },
-    methods : {
-        deleteComentario(id , comentarios){
-            fetch('api/comentarios/' + id, {
-                "method": "DELETE",
-            })
-            .then(response => {getComentarios(producto)})
-            .catch(error => console.log(error))
-            this.$delete(comentarios);
-        },
+    methods: {        
+        remove: function(id_comentario){
+            deleteComentario(id_comentario);
+        }
     }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    //let id_cerveza = document.querySelector("input[name=id_cerveza]").value;
+    
+    getComentarios();
+    document.querySelector('#form-comment').addEventListener('submit', e => {   
+    
+    
+    e.preventDefault();
+    addComentario();
+});
+});
 
+   
 function getComentarios() {
-    fetch("api/comentarios" )
+    fetch('api/comentarios')
     .then(response => response.json())
     .then(comment => app.comentarios = comment)
     .catch(error => console.log(error));
 }
 
 
-getComentarios();
 
-document.querySelector("#form-comment").addEventListener('submit', addComentario);
-
-function addComentario(e) {
-    e.preventDefault();
+function addComentario() {
+    //e.preventDefault();
     
     let comentarios = {
         id_usuario: document.querySelector("input[name=input_user]").value,  
@@ -47,6 +51,18 @@ function addComentario(e) {
      
      .then(response => response.json())
         .then(comment => app.comentarioss.push(comment))
+        .catch(error => console.log(error));
+    }
+
+    function deleteComentario(id_comentario) {
+        let id_cerveza = document.querySelector("input[name=id_cerveza]").value;
+        fetch('api/comentario/' + id_comentario, {
+            method: 'DELETE',
+            headers: {"Content-Type": "application/json"},
+        })
+        .then(response => {
+            getComentarios(id_cerveza); 
+        })
         .catch(error => console.log(error));
     }
     

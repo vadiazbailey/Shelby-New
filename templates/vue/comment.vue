@@ -20,9 +20,8 @@
                     <td>{{ comentario.puntaje}}</td>
                     <td>{{ comentario.id_comentario}}</td>
                     <td>{{ comentario.id_cerveza}}</td>
-                    <td v-if="admin == 'true'">
-                        <button v-on:click="eliminar"> Eliminar</button>
-                    </td> 
+                    <td>
+            <button  @click="deleteComentario(comentario.id_comentario, comentarios)">Borrar</button>                    </td> 
                 </tr>
             </tbody id="tabla">
         </table>
