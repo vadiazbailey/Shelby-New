@@ -12,7 +12,7 @@
         {foreach from=$colour item=c}
             <tr>
                 <td>{$c->nombre}</td>
-                {if $loggedIn==true}
+                {if $admin==true}
                 <td><button><a href='editColour/{$c->id_color}'>Editar</a></button></td>
                 <td><button><a href='deleteColour/{$c->id_color}'>Borrar</a></button></td>
             </tr>
@@ -22,7 +22,8 @@
     </table>
     
     {include file="filtroColor.tpl"}
+  {if $admin==true}
     {include file="insertColour.tpl"}
-    
+    {/if}
     </aside>
 {include file="footer.tpl"}

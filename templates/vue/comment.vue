@@ -10,7 +10,7 @@
                     <th>Puntaje</th>
                     <th>id_comentario</th>
                     <th>id_cerveza</th>
-                    <th v-if="admin == 'true'">Eliminar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,8 +21,10 @@
                     <td>{{ comentario.id_comentario}}</td>
                     <td>{{ comentario.id_cerveza}}</td>
                     <td>
+                    <td>  
             <button  @click="deleteComentario(comentario.id_comentario, comentarios)">Borrar</button>                    </td> 
-                </tr>
+        </td> 
+        </tr>
             </tbody id="tabla">
         </table>
         

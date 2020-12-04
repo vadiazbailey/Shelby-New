@@ -1,4 +1,5 @@
 {include file="header.tpl" }
+{if $admin ==0}
 <div class="container">
                 <form class="form-comment" id="form-comment" action="insert" method="POST">
                     <p>¡Queremos escuchar tu opinion!</p>
@@ -27,6 +28,7 @@
                     <button type="submit">Agregar</button>
                     </form>
  </div>
+ {/if}
  <div>
  {include file="./vue/comment.vue"}
  </div>

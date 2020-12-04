@@ -1,4 +1,5 @@
 <?php
+
 require_once "./View/UserView.php";
 require_once "./Model/UserModel.php";
 
@@ -32,7 +33,7 @@ class UserController{
         header("Location: " . LOGIN);
     }
      
-    
+
     function verifyUser(){
         $userName = $_POST["input_user"];
         $password = $_POST["input_pass"];
@@ -46,24 +47,38 @@ class UserController{
                     if (password_verify($password, $userFromDB->password)){
                         session_start();
                         $_SESSION['MAIL'] = $userFromDB->mail;
+                        $_SESSION['ADMIN'] = $userFromDB->admin;
+                        $isAdmin=$userFromDB->admin;
                         header("Location: " .HOME);
-                    }else{
-                        //$loggedIn=false;
-                       // $user=false;
-                       //$loggedIn,$user,
-                    $this->userView->showLogin("Contraseña incorrecta");
-                    }
-                }else{
-                    // No existe el user en la DB
-                    //$loggedIn=false;
-                    //$user=false;
-                    $this->userView->showLogin("Usuario incorrecto");
-
+                     }else{
+                        header("Location: " .LOGIN);
+                 }
                 }
             }
         }
-    }
         
+    }
+    
+   
+        function isAdmin(){
+           session_start();
+          //  var_dump($_SESSION);
+           // die();
+            if (isset($_SESSION['ADMIN']) AND $_SESSION['ADMIN'] == 1){
+            return true;
+
+        }else{
+            return false;
+
+        }
+        }
+
+           
+               
+        
+    
+    
+    
         //Verifica que se haya iniciado sesion
         function checkLoggedIn(){
             session_start();
@@ -90,22 +105,7 @@ class UserController{
                              
         }
 
- // VERIFICA SI EL USUARIO LOGGEADO ES ADMIN O ES UN USUARIO REGISTRADO
-  
- 
-
-
-
-      //  function checkAdmin(){
-       //     $admin= $_POST['admin'];
-           
-         ////         return true;
-             //   else{
-               //     return false;
-               // }
-            //}        
-
-       
+        
         function showRegisterUser(){
             $loggedIn = false;
             $user = "";
@@ -119,40 +119,58 @@ class UserController{
             }else{
                 $user = "";
             }
+            $admin=$this->isAdmin();
+            
 
-            $admin= $this->checkAdmin(); 
+            //$admin= $this->checkAdmin(); 
             $usuarios = $this->userModel->getUsers();
             $this->userView->showPermisos($loggedIn, $user, $usuarios,$admin);
         }
                     
     
         function updatePermiso($params = null){
-            $loggedIn = $this->checkLoggedIn();
-            if($loggedIn){
-                $user = $_SESSION["MAIL"];
-            }else{
-                $user = "";
-            }
             $admin=$this->isAdmin();
-                
             if(isset($params[':ID'])){
                 $id = $params[':ID'];
-                if ($admin){
-                    $isAdmin = $this->usersModel->getUserById($id);
-                        if ($isAdmin->admin=1){
+               if ($admin){
+                    $isAdmin = $this->userModel->getUserById($id);
+                   // var_dump($isAdmin);
+                   // die();   
+                    if ($isAdmin->admin==1){
                             $permiso = 0;
                         }else{
                             $permiso = 1; 
                         }                
-                        $this->usersModel->updatePermiso($permiso, $id);
-                        $usuarios = $this->usersModel->getUsuarios($usuario);                
-                        header("Location: " . PERMISO);
+                        $this->userModel->updatePermiso($permiso, $id);
+                        $usuarios = $this->userModel->getUsers($usuario);                
+                        header("Location: " . PERMISOS);
                     
                 }else{
                     header("Location: " . HOME);
                 } 
             }  
                         
+        }
+
+        function deleteUser($params =null){
+            $admin=$this->isAdmin();
+    
+            if(isset($params[':ID'])){
+                $id = $params[':ID'];
+               if ($admin){
+                    $isAdmin = $this->userModel->getUserById($id);
+                   // var_dump($isAdmin);
+                   // die();   
+                    if ($isAdmin->admin==1){
+                        $this->userModel->deleteUsuario($id);
+                        $usuarios = $this->userModel->getUsers($usuario);                
+                        header("Location: " . PERMISOS);
+                    
+                        }                
+               
+                    } 
+                    header("Location: " . HOME);
+                }  
         }
 
        

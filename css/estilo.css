@@ -40,11 +40,14 @@ header {
 
 .li-item, a {
     display: inline-block;
-    color: white;
+    color: rgb(255, 255, 255);
     text-transform: capitalize;
     font-family: Helvetica, sans-serif;
     padding: 10px;
     text-decoration: none;
+}
+.tabla-admin a{
+    color:rgb(0, 0, 0)
 }
 
 .li-item:hover {
@@ -272,7 +275,7 @@ hr {
 
 .li-cerveza:hover {
     background-color: rgb(175, 172, 172);
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .li-cerveza a {
@@ -355,9 +358,6 @@ tbody {
     font-size: 18px;
 }
 
-table,td,a{
-    color:whithe;
-}
 
 table, td, tr {
     border-collapse: collapse;
@@ -385,7 +385,7 @@ button{
     background-color: rgb(41, 41, 41);
 }
 tr:hover td {
-    background-color: rgb(77, 73, 73);
+    background-color: rgb(160, 160, 160);
     color: black;
 }
 
@@ -484,9 +484,7 @@ tr:hover td {
    
 
 }
-.container,.form-comment{
-   
-}
+
 .userName,.password{
     flex-direction: column;
     justify-content: space-around;
@@ -503,17 +501,7 @@ tr:hover td {
     
 }
 
-.comment-tabla{
-  
-    flex-direction: row;
-    justify-content: center;
-
-}  
-.container-com{
-   
-}
-
 img.beer {
-    width: 127px;
+    width: 80px;
     height: 130px;
 }

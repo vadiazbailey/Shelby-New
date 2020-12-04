@@ -11,10 +11,11 @@ class ColourView{
         $this->smarty->assign('BASEURL', COLOR);
     }
 
-    function showColours($colour,$loggedIn,$user){
+    function showColours($colour,$loggedIn,$user,$admin){
         $this->smarty->assign('colour', $colour);
         $this->smarty->assign('loggedIn', $loggedIn);
         $this->smarty->assign('user', $user);
+        $this->smarty->assign('admin', $admin);
         $this->smarty-> display('templates/tablaColor.tpl');
     }
 

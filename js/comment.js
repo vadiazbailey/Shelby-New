@@ -8,13 +8,17 @@ let app = new Vue({
     methods: {        
         remove: function(id_comentario){
             deleteComentario(id_comentario);
+        },
+        add: function(){
+            addComentario();
+
         }
     }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
     //let id_cerveza = document.querySelector("input[name=id_cerveza]").value;
-    
+ 
     getComentarios();
     document.querySelector('#form-comment').addEventListener('submit', e => {   
     
@@ -43,10 +47,14 @@ function addComentario() {
         puntaje: document.querySelector("select[name=puntaje]").value,
         id_cerveza: document.querySelector("input[name=id_cerveza]").value
     }
+
+    let data = {
+        "thing": comentarios
+    }
     fetch('api/comentarios', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},       
-        body: JSON.stringify(comentarios) 
+        body: JSON.stringify(data) 
      })
      
      .then(response => response.json())

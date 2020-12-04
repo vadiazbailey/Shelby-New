@@ -1,5 +1,5 @@
 {include file="header.tpl" }
-{if $loggedIn == true}
+{if $admin == true}
 <form method="POST" action="mostrarCervezaActualizada" class="agregar-producto" enctype="multipart/form-data">
         <label>Edita la cerveza seleccionada: </label>
            <p>
@@ -38,7 +38,7 @@
             </select>
             </p>
            
-            {if $loggedIn==true}
+            {if  $admin==true}
                 
                 <input id="id_cerveza" name="id_cerveza" type="hidden" value="{$cerveza->id_cerveza}">
                  <button type="submit" class="enviarDatos">Modificar</button>

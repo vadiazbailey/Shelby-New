@@ -20,11 +20,13 @@ class BeerView{
         $this ->smarty-> display('templates/home.tpl');
     }
 
-    function showBeers($beers, $colour,$log,$user){
+    function showBeers($beers, $colour,$log,$user,$admin){
         $this->smarty->assign('cervezas', $beers);
         $this->smarty->assign('colour', $colour);
         $this->smarty->assign('loggedIn',$log);
         $this->smarty->assign('user',$user);
+        $this->smarty->assign('admin',$admin);
+
         $this ->smarty-> display('templates/table.tpl');
        
     }
@@ -38,21 +40,22 @@ class BeerView{
     function showContacto($log, $user){
         $this->smarty->assign('loggedIn',$log);
         $this->smarty->assign('user',$user);
-        $this ->smarty-> display('templates/contacto.tpl');
+        $this ->smarty->display('templates/contacto.tpl');
     }
 
-    function mostrarFormEditBeer($beer,$colors,$log,$user){
+    function mostrarFormEditBeer($beer,$colors,$log,$user,$admin){
         $this->smarty->assign('cerveza', $beer);
         $this->smarty->assign('colors', $colors);
         $this->smarty->assign('loggedIn', $log);
         $this->smarty->assign('user', $user);
+        $this->smarty->assign('admin', $admin);
         $this->smarty->display('templates/editBeer.tpl');
     }
 
-    function ShowCommentsCSR($log, $user) {
+    function ShowCommentsCSR($log, $user,$admin) {
         $this->smarty->assign('loggedIn',$log);
         $this->smarty->assign('user',$user);
-        //$smarty->assign('titulo_s', "Lista de tareas utilizando CSR");
+        $this->smarty->assign('admin',$admin);
         $this->smarty->display('templates/createComment.tpl'); // muestro el template 
     }
 

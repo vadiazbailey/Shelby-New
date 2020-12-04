@@ -15,9 +15,9 @@ class UserView{
 
     function showLogin($loggedIn,$message=""){
        //Muestro el template
-       $this->smarty->assign('loggedIn', $loggedIn);
-       $this->smarty->assign('message', $message);
-        $this->smarty->display('templates/login.tpl');
+     $this->smarty->assign('loggedIn', $loggedIn);
+     $this->smarty->assign('message', $message);
+     $this->smarty->display('templates/login.tpl');
     }
 
     
@@ -32,6 +32,8 @@ class UserView{
         $this->smarty->assign('user', $user);
         $this->smarty->assign('usuarios', $usuarios);
         $this->smarty->assign('admin', $admin);
+        //var_dump($admin);
+          //  die();
         $this->smarty->display('templates/permisos.tpl');
     }
 

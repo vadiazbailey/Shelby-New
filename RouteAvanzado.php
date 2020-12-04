@@ -38,7 +38,7 @@
     $r->addRoute("checkIn","POST","UserController","registerUser");
 
     $r->addRoute("updatePermiso/:ID","GET","UserController","updatePermiso");
-    $r->addRoute("deleteUsuario/:ID", "GET", "UsersController", "deleteUsuario"); 
+    $r->addRoute("deleteUser/:ID", "GET", "UserController", "deleteUser"); 
 
     //Alta, baja y Modificar Cerveza
     $r->addRoute("insertBeer", "POST", "BeerController", "insertBeer");
@@ -50,7 +50,7 @@
 
     $r->addRoute("filtroColor", "GET", "BeerController", "showFiltroColor");
     
-    //$r->addRoute("deleteUsuario/:ID", "GET", "UserController", "deleteUsuario");
+   
 
     //Alta, baja y Modificar Color
     $r->addRoute("insertColour", "POST", "ColourController", "insertColour");

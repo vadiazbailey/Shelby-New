@@ -22,7 +22,7 @@
                 <td>{$cerveza->cantidad}</td>
                 <td>{$cerveza->nombre} </td>
                 <td><img class="beer" src="{$cerveza->imagen}"></td>
-                {if $loggedIn==true}
+                {if $admin==true}
                     <td><button type="submit" class="enviarDatos"><a href='editBeer/{$cerveza->id_cerveza}'>Editar</a></button></td>
                     <td><button type="submit" class="enviarDatos"><a href='deleteBeer/{$cerveza->id_cerveza}'>Borrar</a></button></td>
                 </tr>
@@ -32,9 +32,9 @@
     </table>
 
 
-    
+    {if $admin==true}
   {include file="insertBeer.tpl" }
- 
+ {/if}
 
 </aside>
 </article>

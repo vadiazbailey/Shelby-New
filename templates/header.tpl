@@ -44,9 +44,9 @@
             <li class="li-item"><a href="reserva">Reservas</a></li>
             <li class="li-item"><a href="opinion">Opinion</a></li>
             <li class="li-item"><a href="contacto">Contacto</a></li>
-           
+        {if $admin ==true}
             <li class="li-item"><a href="permisos">Permisos</a></li>
-            
+        {/if}
         </ul>
 
 

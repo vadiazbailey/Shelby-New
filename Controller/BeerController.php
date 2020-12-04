@@ -28,7 +28,7 @@ class BeerController{
         }else{
             $user = "";
         }
-        $admin = $this->checkAdmin();
+        $admin = $this->userController->isAdmin();
         $this->beerView->showHome($loggedIn,$user,$admin);
     }
 
@@ -39,10 +39,11 @@ class BeerController{
         $loggedIn = $this->userController->checkLoggedIn();
         if ($loggedIn == true){
             $user = $_SESSION["MAIL"];
+            $admin=$this->userController->isAdmin();
         }else{
             $user = "";
         } 
-        $this->beerView->showBeers($beers, $colour,$loggedIn,$user);
+        $this->beerView->showBeers($beers, $colour,$loggedIn,$user,$admin);
     }
 
     //Me muestra el html de reserva
@@ -63,7 +64,8 @@ class BeerController{
         }else{
             $user = "";
         }
-        $this->beerView->ShowCommentsCSR($loggedIn, $user);
+        $admin = $this->userController->isAdmin();
+        $this->beerView->ShowCommentsCSR($loggedIn, $user,$admin);
 
     }
   
@@ -76,7 +78,7 @@ class BeerController{
         }else{
             $user = "";
         }
-        $this->beerView->ShowCommentsCSR($loggedIn, $user);    
+        $this->beerView->ShowContacto($loggedIn, $user);    
     }
     //Me inserta una cerveza
     function insertBeer(){
@@ -91,6 +93,7 @@ class BeerController{
             $loggedIn = $this->userController->checkLoggedIn();
             if ($loggedIn == true){
                 $user = $_SESSION["MAIL"];
+             
             }else{
                 $user = "";
             } 
@@ -105,6 +108,7 @@ class BeerController{
                 }
             }
             else{
+
                 $this->beerModel->insertBeer($estilo, $volumen, $graduacion_alcoholica, $precio, $cantidad, $color); 
             }
         }
@@ -135,7 +139,8 @@ class BeerController{
         $loggedIn = $this->userController->checkLoggedIn();
         if ($loggedIn == true){
             $user = $_SESSION["MAIL"];
-            $this->beerView->mostrarFormEditBeer($beer,$colour,$loggedIn, $user);
+            $admin=$this->userController->isAdmin();
+            $this->beerView->mostrarFormEditBeer($beer,$colour,$loggedIn,$user,$admin);
         }else{
             header ("Location: " . CERVEZA);
            

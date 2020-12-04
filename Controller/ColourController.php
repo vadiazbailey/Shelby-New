@@ -25,7 +25,8 @@ class ColourController{
         }else{
             $user = "";
         }
-        $this->colourView->showColours($colour,$loggedIn,$user);
+        $admin=$this->userController->isAdmin();
+        $this->colourView->showColours($colour,$loggedIn,$user,$admin);
 
     }
 
